@@ -26,18 +26,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/main.html',
-    controller: 'AppCtrl'
-  })
-    .state('home', {
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'AppCtrl'
+    })
+    .state('app.home', {
       url: '/',
       views: {
         menuContent: {
-          tmeplateUrl: 'templates/menu.html',
-        },
-        'content': {
           templateUrl: 'templates/main.html',
         }
       }

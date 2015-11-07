@@ -7,9 +7,11 @@
     <h2>You focus on the fun, we'll worry about the bill.</h2>
     <form ng-submit="doLogin()">
       <div class="list">
-          <a href="#" ui-sref="app.upload" class="button button-block button-balanced" ><i class="fa fa-camera"></i> Scan Item</a>
-          <a href="#" ui-sref="app.main" class="button button-block button-royal" ><i class="fa fa-book"></i> History</a>
-          <a href="#" ui-sref="app.main" class="button button-block button-energized" ><i class="fa fa-cogs"></i> Settings</a>
+        <div class="item">
+          <a href="#" ng-click="scan()" class="button button-block button-balanced" ><i class="fa fa-camera"></i> Scan Item</a>
+          <a ui-sref="^.history" class="button button-block button-royal" ><i class="fa fa-book"></i> History</a>
+          <a ui-sref="^.settings" class="button button-block button-energized" ><i class="fa fa-cogs"></i> Settings</a>
+        </div>
       </div>
     </form>
   </ion-content>

@@ -9709,3 +9709,6 @@ table {
 .btn.btn-yellow:hover {
   background: #fff;
   color: #000; }
+
+[nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"] {
+  background: none; }

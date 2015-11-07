@@ -1,7 +1,33 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-  console.log("starting app controller");
+.controller('AppCtrl', [
+  "$scope", "$ionicModal", "$timeout", "$cordovaCamera",
+  function($scope, $ionicModal, $timeout, $cordovaCamera) {
+    console.log("starting app controller", $cordovaCamera);
+    $scope.scan = function() {
+      var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 100,
+        targetHeight: 100,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false,
+        correctOrientation:true
+      };
+
+      $cordovaCamera.getPicture(options).then(function(imageData) {
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+        console.log("this is a test", imageData);
+      }, function(err) {
+        console.log("picture error", err);
+        // error
+      });
+    }
+
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -39,7 +65,7 @@ angular.module('starter.controllers', [])
   //     $scope.closeLogin();
   //   }, 1000);
   // };
-})
+}])
 
 .controller('HistoryCtrl', function($scope) {
   console.log("starting history controller");

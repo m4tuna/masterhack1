@@ -9721,8 +9721,23 @@ table {
 .bar.bar-stable .title {
   color: #fff; }
 
-[nav-bar-transition="ios"] .buttons, [nav-bar-transition="ios"] .back-text {
-  display: none; }
+.bar-stable .button.button-icon {
+  color: #fff; }
 
 .scroll-content {
   background: #c5482e; }
+
+/*
+.item {
+  background:$var-red;
+  border:none;
+  color:$var-white;
+}
+
+.item-complex .item-content, .item-radio .item-content {
+  background:$var-red;
+  color:$var-white;
+}
+ */
+.scroll-content {
+  top: 40px; }

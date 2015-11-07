@@ -18,10 +18,26 @@
   color:$var-white;
 }
 
-[nav-bar-transition="ios"] .buttons, [nav-bar-transition="ios"] .back-text {
-  display: none;
+.bar-stable .button.button-icon {
+  color:$var-white;
 }
 
 .scroll-content {
   background:$var-red;
+}
+/*
+.item {
+  background:$var-red;
+  border:none;
+  color:$var-white;
+}
+
+.item-complex .item-content, .item-radio .item-content {
+  background:$var-red;
+  color:$var-white;
+}
+ */
+
+.scroll-content {
+  top: 40px;
 }

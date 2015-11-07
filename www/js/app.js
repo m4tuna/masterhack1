@@ -64,6 +64,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
+    .state('app.search', {
+      url: '/search',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/search.html',
+          controller: 'ContactsCtrl'
+        }
+      }
+    })
+
     .state('app.upload', {
       url: '/upload',
       views: {

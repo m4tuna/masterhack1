@@ -67,6 +67,26 @@ angular.module('starter.controllers', [])
   // };
 }])
 
+.controller('ContactsCtrl', function($scope, $cordovaContacts, $stateParams){
+  console.log("starting contacts controller");
+
+  $scope.getContacts = function() {
+    $scope.phoneContacts = [];
+    function onSuccess(contacts) {
+      for (var i = 0; i < contacts.length; i++) {
+        var contact = contacts[i];
+        $scope.phoneContacts.push(contact);
+      }
+    };
+    function onError(contactError) {
+      alert(contactError);
+    };
+    var options = {};
+    options.multiple = true;
+    $cordovaContacts.find(options).then(onSuccess, onError);
+  };
+})
+
 .controller('HistoryCtrl', function($scope) {
   console.log("starting history controller");
 
@@ -74,7 +94,7 @@ angular.module('starter.controllers', [])
     { title: 'Bachelor Party 2015', id: 1 },
     { title: 'Vegas Trip', id: 2 }
   ];
-  
+
 })
 .controller('SettingsCtrl', function($scope, $stateParams) {
   console.log("starting setting controller");
@@ -106,5 +126,6 @@ angular.module('starter.controllers', [])
     });
   };
 })
+
 
 ;

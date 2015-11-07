@@ -33,6 +33,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
+
     .state('app.home', {
       url: '/',
       views: {

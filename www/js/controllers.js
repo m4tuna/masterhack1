@@ -53,11 +53,32 @@ angular.module('starter.controllers', [])
 .controller('SettingsCtrl', function($scope, $stateParams) {
   console.log("starting setting controller");
 })
-.controller('UploadCtrl', function($scope, $stateParams) {
-  console.log("starting upload controller");
-})
 .controller('HistoryItemCtrl', function($scope, $stateParams) {
   console.log("starting history item controller");
+})
+
+.controller('UploadCtrl', function($scope, Camera) {
+  console.log("starting upload controller");
+  function takePicture() {
+    navigator.camera.getPicture(function(imageURI) {
+
+      // imageURI is the URL of the image that we can use for
+      // an <img> element or backgroundImage.
+
+    }, function(err) {
+
+      // Ruh-roh, something bad happened
+
+    }, cameraOptions);
+  }
+
+  $scope.getPhoto = function() {
+    Camera.getPicture().then(function(imageURI) {
+      console.log(imageURI);
+    }, function(err) {
+      console.err(err);
+    });
+  };
 })
 
 ;

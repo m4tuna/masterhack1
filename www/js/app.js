@@ -31,6 +31,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: 'templates/main.html',
     controller: 'AppCtrl'
   })
+    .state('home', {
+      url: '/',
+      views: {
+        menuContent: {
+          tmeplateUrl: 'templates/menu.html',
+        },
+        'content': {
+          templateUrl: 'templates/main.html',
+        }
+      }
+    })
 
     .state('app.history', {
       url: '/history',
@@ -72,5 +83,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/main');
+  $urlRouterProvider.otherwise('/');
 });

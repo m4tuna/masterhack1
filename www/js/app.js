@@ -28,46 +28,49 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'templates/main.html',
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
+    .state('app.history', {
+      url: '/history',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/history.html',
+          controller: 'HistoryCtrl'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+
+    .state('app.settings', {
+      url: '/settings',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/settings.html',
+          controller: 'SettingsCtrl'
+        }
+      }
+    })
+
+    .state('app.upload', {
+      url: '/upload',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/upload.html',
+          controller: 'UploadCtrl'
         }
       }
     })
 
   .state('app.single', {
-    url: '/playlists/:playlistId',
+    url: '/history/:historyId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/history.html',
+        controller: 'HistoryCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/main');
 });

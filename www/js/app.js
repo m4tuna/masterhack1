@@ -25,16 +25,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  .state('main', {
-    url: '/',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/main.html'
-      }
-    }
+    .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/main.html',
+    controller: 'AppCtrl'
   })
+    .state('home', {
+      url: '/',
+      views: {
+        menuContent: {
+          tmeplateUrl: 'templates/menu.html',
+        },
+        'content': {
+          templateUrl: 'templates/main.html',
+        }
+      }
+    })
 
-  .state('history', {
+    .state('app.history', {
       url: '/history',
       views: {
         'menuContent': {
@@ -44,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-    .state('settings', {
+    .state('app.settings', {
       url: '/settings',
       views: {
         'menuContent': {
@@ -54,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-    .state('upload', {
+    .state('app.upload', {
       url: '/upload',
       views: {
         'menuContent': {
@@ -64,7 +73,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-  .state('single', {
+  .state('app.single', {
     url: '/history/:historyId',
     views: {
       'menuContent': {
@@ -74,5 +83,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('main');
+  $urlRouterProvider.otherwise('/');
 });

@@ -13,12 +13,12 @@
           <span class="input-label">Password</span>
           <input type="password" ng-model="loginData.password">
         </label> -->
-        <label class="item">
+        <div class="item">
           <!-- <button class="button button-block button-positive" type="submit">Log in</button> -->
-          <a href="#" ui-sref="app.main" class="button button-block button-balanced" ><i class="fa fa-camera"></i> Scan Item</a>
-          <a href="#" ui-sref="app.main" class="button button-block button-royal" ><i class="fa fa-book"></i> History</a>
-          <a href="#" ui-sref="app.main" class="button button-block button-energized" ><i class="fa fa-cogs"></i> Settings</a>
-        </label>
+          <a href="#" ng-click="scan()" class="button button-block button-balanced" ><i class="fa fa-camera"></i> Scan Item</a>
+          <a ui-sref="^.history" class="button button-block button-royal" ><i class="fa fa-book"></i> History</a>
+          <a ui-sref="^.settings" class="button button-block button-energized" ><i class="fa fa-cogs"></i> Settings</a>
+        </div>
       </div>
     </form>
   </ion-content>

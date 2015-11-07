@@ -10,14 +10,14 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
-  $scope.loginData = {};
+  // $scope.loginData = {};
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+  // // Create the login modal that we will use later
+  // $ionicModal.fromTemplateUrl('templates/login.html', {
+  //   scope: $scope
+  // }).then(function(modal) {
+  //   $scope.modal = modal;
+  // });
 
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
@@ -47,6 +47,30 @@ angular.module('starter.controllers', [])
     { title: 'Vegas Trip', id: 2 }
   ];
 })
+
+
+.controller('UploadCtrl', function($scope, Camera) {
+
+  function takePicture() {
+    navigator.camera.getPicture(function(imageURI) {
+
+      // imageURI is the URL of the image that we can use for
+      // an <img> element or backgroundImage.
+
+    }, function(err) {
+
+      // Ruh-roh, something bad happened
+
+    }, cameraOptions);
+  }
+
+  $scope.getPhoto = function() {
+    Camera.getPicture().then(function(imageURI) {
+      console.log(imageURI);
+    }, function(err) {
+      console.err(err);
+    });
+  };
 
 .controller('HistoryCtrl', function($scope, $stateParams) {
 });

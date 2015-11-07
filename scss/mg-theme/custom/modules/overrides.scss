@@ -6,3 +6,22 @@
 [nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"] {
   background:none;
 }
+
+
+.bar.bar-stable {
+  background-color:$var-red;
+  background-image:none;
+  color:$var-white;
+}
+
+.bar.bar-stable .title {
+  color:$var-white;
+}
+
+[nav-bar-transition="ios"] .buttons, [nav-bar-transition="ios"] .back-text {
+  display: none;
+}
+
+.scroll-content {
+  background:$var-red;
+}

@@ -9117,7 +9117,7 @@ a.button {
   background-color: #eb2048; }
 
 .btn.btn-red {
-  background-color: #ca2026; }
+  background-color: #c5482e; }
 
 .btn.btn-yellow {
   background-color: #ffd850; }
@@ -9607,7 +9607,7 @@ input[type="text"], select {
   border: 1px solid #a6a6a6; }
   input[type="text"].error, select.error {
     background-color: #efefef;
-    border: 1px solid #ca2026; }
+    border: 1px solid #c5482e; }
 
 .sidebar {
   display: none; }
@@ -9712,3 +9712,17 @@ table {
 
 [nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"] {
   background: none; }
+
+.bar.bar-stable {
+  background-color: #c5482e;
+  background-image: none;
+  color: #fff; }
+
+.bar.bar-stable .title {
+  color: #fff; }
+
+[nav-bar-transition="ios"] .buttons, [nav-bar-transition="ios"] .back-text {
+  display: none; }
+
+.scroll-content {
+  background: #c5482e; }

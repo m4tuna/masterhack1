@@ -35,13 +35,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 --------------------------------------------------------- */
 
 //-theme config
-@import "scss/mg-theme/theme/config/var";
-@import "scss/mg-theme/theme/config/colors";
-@import "scss/mg-theme/theme/config/animations";
-@import "scss/mg-theme/theme/config/fonts";
-@import "scss/mg-theme/theme/config/images";
-@import "scss/mg-theme/theme/config/dimensions";
-@import "scss/mg-theme/theme/config/settings";
+@import "scss/mg-theme/config/var";
+@import "scss/mg-theme/config/colors";
+@import "scss/mg-theme/config/animations";
+@import "scss/mg-theme/config/fonts";
+@import "scss/mg-theme/config/images";
+@import "scss/mg-theme/config/dimensions";
+@import "scss/mg-theme/config/settings";
 
 //-mg-core base
 @import "scss/mg-core/base/helpers";
@@ -72,6 +72,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "scss/mg-core/modules/table";
 
 //-theme custom styles
-@import "scss/mg-theme/theme/custom/modules/buttons";
-@import "scss/mg-theme/theme/custom/modules/hero";
-@import "scss/mg-theme/theme/custom/modules/social";
+@import "scss/mg-theme/custom/modules/buttons";
+@import "scss/mg-theme/custom/modules/hero";
+@import "scss/mg-theme/custom/modules/social";

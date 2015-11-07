@@ -1,0 +1,17 @@
+<ion-modal-view view-title="Payform">
+  <ion-content>
+    <div class="center">
+      <h1 class="title">splitIT</h1>
+      <h2>You focus on the fun, we'll worry about the bill.</h2>
+    </div>
+    <form ng-submit="doLogin()">
+      <div class="list">
+        <div class="item">
+          <a href="#" ng-click="scan()" class="button button-block button-balanced" ><i class="fa fa-camera"></i> Scan Item</a>
+          <a ui-sref="^.history" class="button button-block button-royal" ><i class="fa fa-book"></i> History</a>
+          <a ui-sref="^.settings" class="button button-block button-energized" ><i class="fa fa-cogs"></i> Settings</a>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -43,6 +43,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
+
     .state('app.history', {
       url: '/history',
       views: {
@@ -69,6 +70,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
         'menuContent': {
           templateUrl: 'templates/upload.html',
           controller: 'UploadCtrl'
+        }
+      }
+    })
+    .state('app.payform', {
+      url: '/payform',
+      views: {
+        menuContent: {
+          templateUrl: 'templates/payform.html',
         }
       }
     })

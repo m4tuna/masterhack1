@@ -9713,6 +9713,9 @@ table {
 body.app\.scan .scroll-content, body.app\.history .scroll-content, body.app\.settings .scroll-content {
   background: #198263; }
 
+body.app\.complete h1 {
+  font-size: 100px; }
+
 .logo {
   width: 40%;
   margin: 0 auto;

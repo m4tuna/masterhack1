@@ -9,6 +9,12 @@ body.app\.scan, body.app\.history, body.app\.settings {
   }
 }
 
+body.app\.complete {
+  h1 {
+    font-size:100px;
+  }
+}
+
 
 .logo {
   width:40%;

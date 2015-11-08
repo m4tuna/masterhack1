@@ -53,8 +53,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
-
-
     .state('app.scan', {
       url: '/scan',
       views: {

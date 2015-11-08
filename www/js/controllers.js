@@ -80,7 +80,7 @@ angular.module('starter.controllers', [])
         quality: 100,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: false,
+        // allowEdit: false,
         encodingType: Camera.EncodingType.JPEG,
         targetWidth: 1080,
         targetHeight: 1900,

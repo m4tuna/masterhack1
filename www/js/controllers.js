@@ -105,44 +105,6 @@ angular.module('starter.controllers', [])
 })
 .controller('ScanCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting ScanCtrl");
-  console.log(SimplifyCommerce);
-
-  //PAYMENT LOGIC HERE
-   SimplifyCommerce.generateToken({
-     key: "sbpb_NzYwZjc1YmEtMmZhOC00MTMzLWE1ZWQtY2EzYjA2OTYzZTBj",
-     card: {
-       number: "4111111111111111",
-       cvc: "234",
-       expMonth: "10",
-       expYear: "16"
-     }
-   }, function(data){
-      console.log("Processing token");
-     if (data.error) {
-       // Show any validation errors
-       if (data.error.code == "validation") {
-         var fieldErrors = data.error.fieldErrors,
-         fieldErrorsLength = fieldErrors.length,
-         errorList = "";
-         for (var i = 0; i < fieldErrorsLength; i++) {
-           errorList += fieldErrors[i].field + ": " + fieldErrors[i].message;
-         }
-         console.log("Error: ", errorList);
-       }
-     } else {
-        console.log("Connecting to masterhack server1");
-        // The token contains id, last4, and card type
-        var token = data["id"];
-        //pay 5 dollers
-
-        $http.post(config.server + "/api/issue/pay", {
-          token: token,
-          amount: 5
-        }).then(function(){
-          console.log("PAYMENT COMPLETED! YEA YEA");
-        });
-     }
-   });
 })
 .controller('SignupCtrl', function($scope, $stateParams) {
   console.log("starting issue controller");

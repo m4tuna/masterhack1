@@ -100,8 +100,41 @@ angular.module('starter.controllers', [])
 .controller('NearbyCtrl', function($scope, $stateParams) {
   console.log("starting nearby controller");
 })
-.controller('IssueCtrl', function($scope, $stateParams) {
+.controller('IssueCtrl', function($scope, $stateParams, $http) {
   console.log("starting issue controller");
+
+  //PAYMENT LOGIC HERE
+   SimplifyCommerce.generateToken({
+     key: "sbpb_NzYwZjc1YmEtMmZhOC00MTMzLWE1ZWQtY2EzYjA2OTYzZTBj",
+     card: {
+       number: "4111111111111111",
+       cvc: "234",
+       expMonth: "10",
+       expYear: "16"
+     }
+   }, function(data){
+     if (data.error) {
+       // Show any validation errors
+       if (data.error.code == "validation") {
+         var fieldErrors = data.error.fieldErrors,
+         fieldErrorsLength = fieldErrors.length,
+         errorList = "";
+         for (var i = 0; i < fieldErrorsLength; i++) {
+           errorList += fieldErrors[i].field + ": " + fieldErrors[i].message;
+         }
+       }
+     } else {
+        // The token contains id, last4, and card type
+        var token = data["id"];
+        //pay 5 dollers
+        $http.post("http://localhost:5000/api/issue/pay", {
+          token: token,
+          amount: 5
+        }, function(res){
+          console.log("PAYMENT COMPLETED! YEA YEA");
+        });
+     }
+   });
 })
 .controller('SignupCtrl', function($scope, $stateParams) {
   console.log("starting issue controller");

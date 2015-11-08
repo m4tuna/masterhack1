@@ -103,6 +103,9 @@ angular.module('starter.controllers', [])
 .controller('IssueCtrl', function($scope, $stateParams) {
   console.log("starting issue controller");
 })
+.controller('SignupCtrl', function($scope, $stateParams) {
+  console.log("starting issue controller");
+})
 .controller('SettingsCtrl', function($scope, $stateParams) {
   console.log("starting setting controller");
 })

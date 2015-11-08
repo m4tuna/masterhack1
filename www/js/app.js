@@ -43,6 +43,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
+    .state('app.signup', {
+      url: '/signup',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/signup.html',
+          controller: 'SignupCtrl'
+        }
+      }
+    })
+
 
     .state('app.nearby', {
       url: '/nearby',

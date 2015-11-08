@@ -1,8 +1,8 @@
 <ion-view>
+  <ion-header-bar>
+    <h1 class="title">split IT</h1>
+  </ion-header-bar>
   <ion-content>
-    <div class="center">
-        <h4>Login to THISAPP</h4>
-    </div>
     <form ng-submit="doLogin()">
       <div class="list">
         <label class="item item-input">
@@ -16,6 +16,9 @@
         <label class="item">
           <button class="button button-block button-positive" type="submit">Log in</button>
         </label>
+        <div class="center">
+          <a href="#" ui-sref="^.signup">Register</a>
+        </div>
       </div>
     </form>
   </ion-content>

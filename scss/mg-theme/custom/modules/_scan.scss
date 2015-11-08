@@ -1,14 +1,10 @@
 // ==========================================================================
-// Login Signup
+// Scan
 // ==========================================================================
 
-body.app\.home, body.app\.signup {
-  .buttons-left {
-    display: none;
-  }
+body.app\.scan {
   .scroll-content {
-    background:url('../img/bg.png');
-    background-size:cover;
+    background:$dark-green;
   }
   .scroll {
     margin-top:20px;
@@ -18,13 +14,6 @@ body.app\.home, body.app\.signup {
     .list .item {
       background:none;
       border:none;
-      padding: 5px 0px;
-    }
-    .buttons {
-      margin-top:20px;
-       .item {
-        padding:0;
-      }
     }
     input[type="password"], input[type="text"]{
         border: 1px solid $var-white;

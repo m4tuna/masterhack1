@@ -103,7 +103,7 @@ angular.module('starter.controllers', [])
 .controller('NearbyCtrl', function($scope, $stateParams) {
   console.log("starting nearby controller");
 })
-.controller('IssueCtrl', function($scope, $stateParams, $http, config) {
+.controller('ScanCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting issue controller");
   console.log(SimplifyCommerce);
 

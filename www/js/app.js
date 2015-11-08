@@ -65,6 +65,26 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
+    .state('app.payment', {
+      url: '/payment',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/payment.html',
+          controller: 'IssueCtrl'
+        }
+      }
+    })
+
+    .state('app.complete', {
+      url: '/complete',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/complete.html',
+          controller: 'IssueCtrl'
+        }
+      }
+    })
+
 
     .state('app.single', {
       url: '/single',

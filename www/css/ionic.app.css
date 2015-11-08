@@ -9745,14 +9745,16 @@ table {
 .item-input {
   padding: 0px 10px 20px; }
 
-form {
-  margin: 0 auto;
-  width: 80%;
-  border: 3px solid #fff; }
-  form input[type="text"] {
-    width: 100%;
-    display: block;
-    padding-left: 15px; }
+input[type="text"] {
+  width: 100%;
+  display: block;
+  padding: 5px; }
+
+textarea {
+  border: 1px solid #a6a6a6;
+  min-height: 150px;
+  padding: 5px;
+  max-width: 100%; }
 
 .list .item {
   background: #fff; }

@@ -9764,4 +9764,5 @@ textarea {
   background: #fff; }
 
 input[type="password"] {
-  border: 1px solid #a6a6a6; }
+  border: 1px solid #a6a6a6;
+  padding: 5px; }

@@ -34,7 +34,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       controller: 'AppCtrl'
     })
 
-    .state('app.home', {
+    .state('app.login', {
       url: '/',
       views: {
         menuContent: {
@@ -53,16 +53,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
-
-    .state('app.nearby', {
-      url: '/nearby',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/nearby.html',
-          controller: 'NearbyCtrl'
-        }
-      }
-    })
 
 
     .state('app.scan', {
@@ -107,17 +97,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
     })
 
 
-    .state('app.main', {
-      url: '/main',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/main.html',
-          controller: 'HistoryCtrl'
-        }
-      }
-    })
-
-
     .state('app.history', {
       url: '/history',
       views: {
@@ -148,23 +127,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
-    .state('app.upload', {
-      url: '/upload',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/upload.html',
-          controller: 'UploadCtrl'
-        }
-      }
-    })
-    .state('app.payform', {
-      url: '/payform',
-      views: {
-        menuContent: {
-          templateUrl: 'templates/payform.html',
-        }
-      }
-    })
 
   .state('app.historysingle', {
     url: '/history/:historyId',

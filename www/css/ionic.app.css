@@ -9710,6 +9710,17 @@ table {
   background: #fff;
   color: #000; }
 
+body.app\.scan .scroll-content, body.app\.history .scroll-content, body.app\.settings .scroll-content {
+  background: #198263; }
+
+.logo {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 400px; }
+  .logo img {
+    width: 100%; }
+
 [nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"] {
   background: none; }
 
@@ -9760,50 +9771,47 @@ input[type="password"] {
   border: 1px solid #a6a6a6;
   padding: 5px; }
 
-body.app\.home .buttons-left, body.app\.signup .buttons-left {
+body.app\.login .buttons-left, body.app\.signup .buttons-left {
   display: none; }
 
-body.app\.home .scroll-content, body.app\.signup .scroll-content {
+body.app\.login .scroll-content, body.app\.signup .scroll-content {
   background: url("../img/bg.png");
   background-size: cover; }
 
-body.app\.home .scroll, body.app\.signup .scroll {
+body.app\.login .scroll, body.app\.signup .scroll {
   margin-top: 20px; }
-  body.app\.home .scroll .list, body.app\.signup .scroll .list {
+  body.app\.login .scroll .list, body.app\.signup .scroll .list {
     padding: 0 20px; }
-  body.app\.home .scroll .list .item, body.app\.signup .scroll .list .item {
+  body.app\.login .scroll .list .item, body.app\.signup .scroll .list .item {
     background: none;
     border: none;
     padding: 5px 0px; }
-  body.app\.home .scroll .buttons, body.app\.signup .scroll .buttons {
+  body.app\.login .scroll .buttons, body.app\.signup .scroll .buttons {
     margin-top: 20px; }
-    body.app\.home .scroll .buttons .item, body.app\.signup .scroll .buttons .item {
+    body.app\.login .scroll .buttons .item, body.app\.signup .scroll .buttons .item {
       padding: 0; }
-  body.app\.home .scroll input[type="password"], body.app\.home .scroll input[type="text"], body.app\.signup .scroll input[type="password"], body.app\.signup .scroll input[type="text"] {
+  body.app\.login .scroll input[type="password"], body.app\.login .scroll input[type="text"], body.app\.signup .scroll input[type="password"], body.app\.signup .scroll input[type="text"] {
     border: 1px solid #fff;
     padding: 5px;
     height: 45px;
     color: #fff; }
-    body.app\.home .scroll input[type="password"]::-webkit-input-placeholder, body.app\.home .scroll input[type="text"]::-webkit-input-placeholder, body.app\.signup .scroll input[type="password"]::-webkit-input-placeholder, body.app\.signup .scroll input[type="text"]::-webkit-input-placeholder {
+    body.app\.login .scroll input[type="password"]::-webkit-input-placeholder, body.app\.login .scroll input[type="text"]::-webkit-input-placeholder, body.app\.signup .scroll input[type="password"]::-webkit-input-placeholder, body.app\.signup .scroll input[type="text"]::-webkit-input-placeholder {
       color: #fff; }
-    body.app\.home .scroll input[type="password"]:-moz-placeholder, body.app\.home .scroll input[type="text"]:-moz-placeholder, body.app\.signup .scroll input[type="password"]:-moz-placeholder, body.app\.signup .scroll input[type="text"]:-moz-placeholder {
+    body.app\.login .scroll input[type="password"]:-moz-placeholder, body.app\.login .scroll input[type="text"]:-moz-placeholder, body.app\.signup .scroll input[type="password"]:-moz-placeholder, body.app\.signup .scroll input[type="text"]:-moz-placeholder {
       /* Firefox 18- */
       color: #fff; }
-    body.app\.home .scroll input[type="password"]::-moz-placeholder, body.app\.home .scroll input[type="text"]::-moz-placeholder, body.app\.signup .scroll input[type="password"]::-moz-placeholder, body.app\.signup .scroll input[type="text"]::-moz-placeholder {
+    body.app\.login .scroll input[type="password"]::-moz-placeholder, body.app\.login .scroll input[type="text"]::-moz-placeholder, body.app\.signup .scroll input[type="password"]::-moz-placeholder, body.app\.signup .scroll input[type="text"]::-moz-placeholder {
       /* Firefox 19+ */
       color: #fff; }
-    body.app\.home .scroll input[type="password"]:-ms-input-placeholder, body.app\.home .scroll input[type="text"]:-ms-input-placeholder, body.app\.signup .scroll input[type="password"]:-ms-input-placeholder, body.app\.signup .scroll input[type="text"]:-ms-input-placeholder {
+    body.app\.login .scroll input[type="password"]:-ms-input-placeholder, body.app\.login .scroll input[type="text"]:-ms-input-placeholder, body.app\.signup .scroll input[type="password"]:-ms-input-placeholder, body.app\.signup .scroll input[type="text"]:-ms-input-placeholder {
       color: #fff; }
-  body.app\.home .scroll label, body.app\.home .scroll .input-label, body.app\.signup .scroll label, body.app\.signup .scroll .input-label {
+  body.app\.login .scroll label, body.app\.login .scroll .input-label, body.app\.signup .scroll label, body.app\.signup .scroll .input-label {
     color: #fff; }
-  body.app\.home .scroll h1, body.app\.signup .scroll h1 {
+  body.app\.login .scroll h1, body.app\.signup .scroll h1 {
     font-size: 120px;
     margin-bottom: 0;
     color: #fff;
     text-align: center; }
-
-body.app\.scan .scroll-content {
-  background: #198263; }
 
 body.app\.scan .scroll {
   margin-top: 20px; }

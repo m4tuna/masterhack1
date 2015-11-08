@@ -104,7 +104,7 @@ angular.module('starter.controllers', [])
   console.log("starting nearby controller");
 })
 .controller('ScanCtrl', function($scope, $stateParams, $http, config) {
-  console.log("starting issue controller");
+  console.log("starting ScanCtrl");
   console.log(SimplifyCommerce);
 
   //PAYMENT LOGIC HERE

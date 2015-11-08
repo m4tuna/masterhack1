@@ -121,8 +121,6 @@ angular.module('starter.controllers', [])
   function($scope, $cordovaContacts, $stateParams, $ionicModal) {
     console.log("starting ChargeCtrl");
 
-    // get the contacts
-
     $scope.removeItem = function(idx, item) {
       $scope.receipt.lineItems.splice(idx,1);
     }

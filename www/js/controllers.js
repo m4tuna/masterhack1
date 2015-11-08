@@ -93,6 +93,7 @@ angular.module('starter.controllers', [])
         correctOrientation:true,
       };
       $scope.loading = true;
+      var isSet = false;
       $cordovaCamera
       .getPicture(options)
       .then(function(imageData) {
@@ -102,7 +103,7 @@ angular.module('starter.controllers', [])
       .then($api.scan)
       .then(function(data) {
         $scope.receipt = data;
-        $state.go('app.charge');
+        isSet = true;
       })
       .catch(function(err) {
         console.log("scan error: ", JSON.stringify(err, null, 2));
@@ -110,6 +111,9 @@ angular.module('starter.controllers', [])
       })
       .finally(function () {
         $scope.loading = false;
+        if(isSet) {
+          $state.go('app.charge');
+        }
       });
     };
 

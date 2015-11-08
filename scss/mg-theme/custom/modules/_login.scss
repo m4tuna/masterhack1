@@ -1,0 +1,52 @@
+// ==========================================================================
+// Login
+// ==========================================================================
+
+body.app\.home {
+  .buttons-left {
+    display: none;
+  }
+  .scroll-content {
+    background:url('../img/bg.png');
+    background-size:cover;
+  }
+  .scroll {
+    margin-top:20px;
+    .list {
+      padding: 20px;
+    }
+    .list .item {
+      background:none;
+      border:none;
+    }
+    input[type="password"], input[type="text"]{
+        border: 1px solid $var-white;
+        padding:5px;
+        height: 45px;
+        &::-webkit-input-placeholder {
+          color: $var-white;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+          color: $var-white;
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+          color: $var-white;
+        }
+
+        &:-ms-input-placeholder {
+          color: $var-white;
+        }
+    }
+
+    label, .input-label {
+      color:$var-white;
+    }
+    h1 {
+      font-size:80px;
+      color:$var-white;
+      text-align: center;
+    }
+  }
+}

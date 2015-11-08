@@ -9742,32 +9742,6 @@ table {
 .new-issue .item-input {
   padding: 0px 10px 20px; }
 
-.login .scroll {
-  margin-top: 20px; }
-  .login .scroll .list .item {
-    background: none;
-    border: none; }
-  .login .scroll input[type="password"], .login .scroll input[type="text"] {
-    border: 1px solid #fff;
-    padding: 5px;
-    height: 45px; }
-    .login .scroll input[type="password"]::-webkit-input-placeholder, .login .scroll input[type="text"]::-webkit-input-placeholder {
-      color: #fff; }
-    .login .scroll input[type="password"]:-moz-placeholder, .login .scroll input[type="text"]:-moz-placeholder {
-      /* Firefox 18- */
-      color: #fff; }
-    .login .scroll input[type="password"]::-moz-placeholder, .login .scroll input[type="text"]::-moz-placeholder {
-      /* Firefox 19+ */
-      color: #fff; }
-    .login .scroll input[type="password"]:-ms-input-placeholder, .login .scroll input[type="text"]:-ms-input-placeholder {
-      color: #fff; }
-  .login .scroll label, .login .scroll .input-label {
-    color: #fff; }
-  .login .scroll h1 {
-    font-size: 80px;
-    color: #fff;
-    text-align: center; }
-
 input[type="text"] {
   width: 100%;
   display: block;
@@ -9785,3 +9759,47 @@ textarea {
 input[type="password"] {
   border: 1px solid #a6a6a6;
   padding: 5px; }
+
+body.app\.home .buttons-left {
+  display: none; }
+
+body.app\.home .scroll-content {
+  background: url("../img/bg.png");
+  background-size: cover; }
+
+body.app\.home .scroll {
+  margin-top: 20px; }
+  body.app\.home .scroll .list {
+    padding: 20px; }
+  body.app\.home .scroll .list .item {
+    background: none;
+    border: none; }
+  body.app\.home .scroll input[type="password"], body.app\.home .scroll input[type="text"] {
+    border: 1px solid #fff;
+    padding: 5px;
+    height: 45px; }
+    body.app\.home .scroll input[type="password"]::-webkit-input-placeholder, body.app\.home .scroll input[type="text"]::-webkit-input-placeholder {
+      color: #fff; }
+    body.app\.home .scroll input[type="password"]:-moz-placeholder, body.app\.home .scroll input[type="text"]:-moz-placeholder {
+      /* Firefox 18- */
+      color: #fff; }
+    body.app\.home .scroll input[type="password"]::-moz-placeholder, body.app\.home .scroll input[type="text"]::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #fff; }
+    body.app\.home .scroll input[type="password"]:-ms-input-placeholder, body.app\.home .scroll input[type="text"]:-ms-input-placeholder {
+      color: #fff; }
+  body.app\.home .scroll label, body.app\.home .scroll .input-label {
+    color: #fff; }
+  body.app\.home .scroll h1 {
+    font-size: 80px;
+    color: #fff;
+    text-align: center; }
+
+body .menu-left .left {
+  float: left; }
+
+body .menu-left .scroll .list {
+  padding: 0; }
+
+body .menu-left .scroll-content {
+  background: #c5482e; }

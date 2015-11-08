@@ -38,6 +38,16 @@
 }
  */
 
-.item-input {
+.new-issue .item-input {
   padding: 0px 10px 20px;
+}
+
+
+.login .scroll {
+  margin-top:20px;
+  h1 {
+    font-size:20px;
+    color:$var-white;
+    text-align: center;
+  }
 }

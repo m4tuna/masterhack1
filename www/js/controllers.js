@@ -86,7 +86,7 @@ angular.module('starter.controllers', [])
         allowEdit: false,
         encodingType: Camera.EncodingType.JPEG,
         // targetWidth: 1080,
-        targetHeight: 1900,
+        targetHeight: 1000,
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,

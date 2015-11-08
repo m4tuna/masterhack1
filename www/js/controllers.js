@@ -69,8 +69,8 @@ angular.module('starter.controllers', [])
   }
 ])
 .controller('AppCtrl', [
-  "$scope", "$rootScope", "$api", "$timeout", "$cordovaCamera", "$cordovaGeolocation", "config",
-  function($scope, $rootScope, $api, $timeout, $cordovaCamera, $cordovaGeolocation, config) {
+  "$scope", "$rootScope", "$api", "$timeout", "$cordovaCamera", "$cordovaGeolocation", "config", '$state',
+  function($scope, $rootScope, $api, $timeout, $cordovaCamera, $cordovaGeolocation, config, $state) {
     console.log("starting app controller: ", $rootScope.$state);
 
     // Perform the login action when the user submits the login form
@@ -101,6 +101,7 @@ angular.module('starter.controllers', [])
       .then($api.scan)
       .then(function(data) {
         $scope.receipt = data;
+        $state.go('app.charge');
       })
       .catch(function(err) {
         console.log("scan error: ", JSON.stringify(err, null, 2));

@@ -90,7 +90,7 @@ angular.module('starter.controllers', [])
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,
-        correctOrientation:true,
+        correctOrientation:false,
       };
       $scope.loading = true;
       var isSet = false;

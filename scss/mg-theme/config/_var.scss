@@ -30,7 +30,7 @@ $var-red: #c5482e;
 $var-yellow: #ffd850;
 $var-purple: #6b1769;
 $var-pink: #eb2048;
-$var-green: #4ebd45;
+$var-green: #2ec598;
 $var-orange: #ff9e04;
 $var-grey: #a6a6a6;
 
@@ -42,6 +42,8 @@ $lighter-brown: #f8d688;
 $light-grey: #efefef;
 $light-green: #E3FFE6;
 $light-orange: #f8d148;
+
+$dark-green: #198263;
 
 //-other colors
 $two-orange: #f8d148;
@@ -56,6 +58,11 @@ $walmart-blue: #007cc2;
 $sans: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 $open-sans: 'Open Sans', sans-serif;
 $lato: 'Lato', sans-serif;
+
+//-mastercard color
+$mcode-light-orange:#FF9900;
+$mcode-dark-orange:#D15821;
+$mcode-dark-red:#CC0000;
 
 //-default font
 $default-font: $sans;

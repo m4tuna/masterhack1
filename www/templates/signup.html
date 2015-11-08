@@ -1,26 +1,37 @@
 <ion-view view-title="Signup">
   <ion-content>
+    <h1><i class="fa fa-square-o"></i></h1>
     <form ng-submit="doLogin()">
       <div class="list">
-        <label class="item item-input item-stacked-label">
+        <label class="item item-input item-floating-label">
           <span class="input-label">First Name</span>
           <input type="text" placeholder="First Name">
         </label>
-        <label class="item item-input item-stacked-label">
+        <label class="item item-input item-floating-label">
           <span class="input-label">Last Name</span>
           <input type="text" placeholder="Last Name">
         </label>
-        <label class="item item-input item-stacked-label">
+        <label class="item item-input item-floating-label">
           <span class="input-label">Email</span>
           <input type="text" placeholder="Email">
         </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Zip</span>
-          <input type="text" placeholder="Zip">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Password</span>
+          <input type="password" placeholder="Password">
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Register</button>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Password Again</span>
+          <input type="password" placeholder="Password Again">
         </label>
+        <div class="buttons">
+          <label class="item">
+            <button class="button button-block button-dark" type="submit"><i class="fa fa-credit-card"></i> Add Card</button>
+          </label>
+          <label class="item">
+            <button class="button button-block button-balanced" type="submit">Signup</button>
+          </label>
+        </div>
+
       </div>
     </form>
   </ion-content>

@@ -65,12 +65,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
     })
 
 
-    .state('app.newissue', {
-      url: '/new-issue',
+    .state('app.scan', {
+      url: '/scan',
       views: {
         'menuContent': {
-          templateUrl: 'templates/new-issue.html',
-          controller: 'IssueCtrl'
+          templateUrl: 'templates/scan.html',
+          controller: 'ScanCtrl'
         }
       }
     })

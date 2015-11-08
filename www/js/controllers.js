@@ -40,14 +40,14 @@ angular.module('starter.controllers', [])
         // Scan receipt image through OCR
         console.log('Doing scan', JSON.stringify(data, null,2));
 
-        $scope.loading = true;
+        // $scope.loading = true;
 
 
         return $http
                 .post(config.server + "api/receipt", data)
                 .then(function(res) {
                   console.log("scan response", JSON.stringify(res.data, null, 2));
-                  $scope.loading = false;
+                  // $scope.loading = false;
                   return res.data;
                 }, api.error);
       },

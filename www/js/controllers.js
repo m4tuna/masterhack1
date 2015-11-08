@@ -83,11 +83,11 @@ angular.module('starter.controllers', [])
         allowEdit: false,
         encodingType: Camera.EncodingType.JPEG,
         // targetWidth: 1080,
-        targetHeight: 1024,
+        targetHeight: 1920,
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,
-        correctOrientation:true
+        correctOrientation:true,
       };
 
       $cordovaCamera
@@ -98,89 +98,177 @@ angular.module('starter.controllers', [])
       .then($api.scan)
       .then(function(data) {
         $scope.receipt = data;
-        $rootScope.$state.go("app.charge");
       })
       .catch(function(err) {
         console.log("scan error: ", JSON.stringify(err, null, 2));
         alert("error scanning receipt");
       });
     };
+
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+
+  // Form data for the login modal
+  // $scope.loginData = {};
+
+  // // Create the login modal that we will use later
+  // $ionicModal.fromTemplateUrl('templates/login.html', {
+  //   scope: $scope
+  // }).then(function(modal) {
+  //   $scope.modal = modal;
+  // });
+
+  // Triggered in the login modal to close it
+  // $scope.closeLogin = function() {
+  //   $scope.modal.hide();
+  // };
+
+  // // Open the login modal
+  // $scope.login = function() {
+  //   $scope.modal.show();
+  // };
+  // };
 }])
-// .controller('HistoryCtrl', function($scope) {
-//   console.log("starting history controller");
+.controller('HistoryCtrl', function($scope) {
+  console.log("starting history controller");
 
-//   $scope.history = [
-//     { title: 'Bachelor Party 2015', id: 1 },
-//     { title: 'Vegas Trip', id: 2 }
-//   ];
+  $scope.history = [
+    { title: 'Bachelor Party 2015', id: 1 },
+    { title: 'Vegas Trip', id: 2 }
+  ];
 
-// })
+})
 
-.controller('ChargeCtrl', [
-  "$scope", "$cordovaContacts", "$stateParams", "$ionicModal",
-  function($scope, $cordovaContacts, $stateParams, $ionicModal) {
-    console.log("starting ChargeCtrl");
+.controller('ChargeCtrl', function($scope, $cordovaContacts, $stateParams, $ionicModal) {
+  console.log("starting ChargeCtrl");
 
-    // get the contacts
+  // get the contacts
 
-    $scope.removeItem = function(idx, item) {
-      $scope.receipt.lineItems.splice(idx,1);
+  $scope.getContacts = function() {
+
+    var obj = new ContactFindOptions();
+    obj.filter = " ";
+    obj.multiple = true;
+
+    console.log("navigator.contacts: " + navigator.contacts);
+    navigator.contacts.find(["displayName", "name", "phoneNumbers"], contacts_success, contacts_fail, obj);
+
+
+    function contacts_success(contacts) {
+      console.log("contacts_success(): " + JSON.stringify(contacts));
+      $scope.theContacts = contacts;
     }
-
-    $scope.addContacts = function(item) {
-      console.log("adding contacts to item: ", item, $cordovaContacts);
-
-      $cordovaContacts.pickContact().then(function(contact) { //omitting parameter to .find() causes all contacts to be returned
-        console.log("what is this shit", JSON.stringify(contact, null, 2));
-
-        if(!item.owners) {
-          item.owners = []
-        }
-
-        item.owners.push({
-          initials: contact.name.givenName.charAt(0) + contact.name.familyName.charAt(0),
-          number: contact.phoneNumbers[0].value.replace(/[^\d]/g,'')
-        });
-
-        console.log("new shit", JSON.stringify(item,null,2));
-
-        $ionicModal.fromTemplateUrl('templates/add.html', {
-          scope: $scope
-        }).then(function(modal) {
-          $scope.modal = modal;
-          $scope.modal.show();
-        });
-      }, function(err) {
-        console.log("get contacts fail: ", err);
-      });
-    };
-
-    $scope.removeContact = function(item,idx) {
-      item.owners.splice(idx,1);
+    function contacts_fail(msg) {
+      console.log("get_contacts() Error: " + msg);
     }
+    get_contacts();
+  };
 
-    $scope.addItem = function(item) {
-      if(!$scope.receipt) {
-        $scope.receipt = { lineItems: [] };
-      }
+  // build the contacts modal
 
-      if(!$scope.receipt.items) {
-        $scope.receipt.lineItems = [];
-      }
+  $scope.buildModal = function() {
+    console.log('does this fucking work?');
+    $ionicModal.fromTemplateUrl('templates/add.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  };
 
-      $scope.receipt.lineItems.push(item);
-      $scope.modal.hide();
-    };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+})
+.controller('ScanCtrl', function($scope, $stateParams, $http, config) {
+  console.log("starting ScanCtrl");
 
-    $scope.closeModal = function() {
-      $scope.modal.hide();
-    }
-}])
+  //PAYMENT LOGIC HERE
+  //  SimplifyCommerce.generateToken({
+  //    key: "sbpb_NzYwZjc1YmEtMmZhOC00MTMzLWE1ZWQtY2EzYjA2OTYzZTBj",
+  //    card: {
+  //      number: "4111111111111111",
+  //      cvc: "234",
+  //      expMonth: "10",
+  //      expYear: "16"
+  //    }
+  //  }, function(data){
+  //     console.log("Processing token");
+  //    if (data.error) {
+  //      // Show any validation errors
+  //      if (data.error.code == "validation") {
+  //        var fieldErrors = data.error.fieldErrors,
+  //        fieldErrorsLength = fieldErrors.length,
+  //        errorList = "";
+  //        for (var i = 0; i < fieldErrorsLength; i++) {
+  //          errorList += fieldErrors[i].field + ": " + fieldErrors[i].message;
+  //        }
+  //        console.log("Error: ", errorList);
+  //      }
+  //    } else {
+  //       console.log("Connecting to masterhack server1");
+  //       // The token contains id, last4, and card type
+  //       var token = data["id"];
+  //       //pay 5 dollers
+   //
+  //       $http.post(config.server + "/api/issue/pay", {
+  //         token: token,
+  //         amount: 5
+  //       }).then(function(){
+  //         console.log("PAYMENT COMPLETED! YEA YEA");
+  //       });
+  //    }
+  //  });
+})
+.controller('SignupCtrl', function($scope, $stateParams) {
+  console.log("starting issue controller");
+})
 .controller('SettingsCtrl', function($scope, $stateParams) {
   console.log("starting setting controller");
 })
-.controller('ScanCtrl', function($scope, $stateParams) {
-  console.log("starting scan controller");
+.controller('HistoryItemCtrl', function($scope, $stateParams) {
+  console.log("starting history item controller");
 })
+
+.controller('UploadCtrl', function($scope, Camera) {
+  console.log("starting upload controller");
+  function takePicture() {
+    navigator.camera.getPicture(function(imageURI) {
+
+      // imageURI is the URL of the image that we can use for
+      // an <img> element or backgroundImage.
+
+    }, function(err) {
+
+      // Ruh-roh, something bad happened
+
+    }, cameraOptions);
+  }
+
+  $scope.getPhoto = function() {
+    Camera.getPicture().then(function(imageURI) {
+      console.log(imageURI);
+    }, function(err) {
+      console.err(err);
+    });
+  };
+})
+
 
 ;

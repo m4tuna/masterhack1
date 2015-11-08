@@ -1,7 +1,7 @@
 {
-  "name": "masterhack1",
+  "name": "fund2fix",
   "version": "1.1.1",
-  "description": "masterhack1: An Ionic project",
+  "description": "fund2fix: An Ionic project",
   "dependencies": {
     "glob": "^5.0.15",
     "gulp": "^3.5.6",

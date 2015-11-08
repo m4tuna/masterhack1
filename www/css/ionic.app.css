@@ -9724,6 +9724,9 @@ body.app\.complete h1 {
   .logo img {
     width: 100%; }
 
+.item-complex .item-content, .item-radio .item-content {
+  background-color: rgba(255, 255, 255, 0.28); }
+
 [nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"] {
   background: none; }
 
@@ -9762,7 +9765,7 @@ input[type="text"] {
   padding: 5px; }
 
 textarea {
-  border: 1px solid #a6a6a6;
+  border: 2px solid #a6a6a6;
   min-height: 150px;
   padding: 5px;
   max-width: 100%; }
@@ -9794,7 +9797,7 @@ body.app\.login .scroll, body.app\.signup .scroll {
     body.app\.login .scroll .buttons .item, body.app\.signup .scroll .buttons .item {
       padding: 0; }
   body.app\.login .scroll input[type="password"], body.app\.login .scroll input[type="text"], body.app\.signup .scroll input[type="password"], body.app\.signup .scroll input[type="text"] {
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     padding: 5px;
     height: 45px;
     color: #fff; }
@@ -9815,6 +9818,9 @@ body.app\.login .scroll, body.app\.signup .scroll {
     margin-bottom: 0;
     color: #fff;
     text-align: center; }
+
+.login-btn {
+  margin-top: 20px; }
 
 body.app\.scan .scroll {
   margin-top: 20px; }

@@ -27,7 +27,7 @@ body.app\.login, body.app\.signup {
       }
     }
     input[type="password"], input[type="text"]{
-        border: 1px solid $var-white;
+        border: 2px solid $var-white;
         padding:5px;
         height: 45px;
         color:$var-white;
@@ -58,4 +58,8 @@ body.app\.login, body.app\.signup {
       text-align: center;
     }
   }
+}
+
+.login-btn {
+  margin-top: 20px;
 }

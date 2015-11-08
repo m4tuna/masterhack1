@@ -133,8 +133,22 @@ angular.module('starter.controllers', [])
   // };
   // };
 }])
-.controller('ContactsCtrl', function($scope, $cordovaContacts, $stateParams){
-  console.log("starting contacts controller");
+.value('config', {
+  server: "http://masterhack-server1.herokuapp.com/"
+})
+
+.controller('HistoryCtrl', function($scope) {
+  console.log("starting history controller");
+
+  $scope.history = [
+    { title: 'Bachelor Party 2015', id: 1 },
+    { title: 'Vegas Trip', id: 2 }
+  ];
+
+})
+
+.controller('ChargeCtrl', function($scope, $cordovaContacts, $stateParams) {
+  console.log("starting ChargeCtrl");
 
   $scope.getContacts = function() {
     $scope.phoneContacts = [];
@@ -151,20 +165,6 @@ angular.module('starter.controllers', [])
     options.multiple = true;
     $cordovaContacts.find(options).then(onSuccess, onError);
   };
-})
-
-.controller('HistoryCtrl', function($scope) {
-  console.log("starting history controller");
-
-  $scope.history = [
-    { title: 'Bachelor Party 2015', id: 1 },
-    { title: 'Vegas Trip', id: 2 }
-  ];
-
-})
-
-.controller('NearbyCtrl', function($scope, $stateParams) {
-  console.log("starting nearby controller");
 })
 .controller('ScanCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting ScanCtrl");

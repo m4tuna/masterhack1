@@ -63,6 +63,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
+    .state('app.charge', {
+      url: '/charge',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/charge.html',
+          controller: 'ChargeCtrl'
+        }
+      }
+    })
+
     .state('app.payment', {
       url: '/payment',
       views: {

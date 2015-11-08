@@ -2,6 +2,7 @@
 // Login Signup
 // ==========================================================================
 
+
 body.app\.login, body.app\.signup {
   .buttons-left {
     display: none;
@@ -10,8 +11,8 @@ body.app\.login, body.app\.signup {
     background:url('../img/bg.png');
     background-size:cover;
   }
-  .scroll {
-    margin-top:20px;
+  .scroll-content {
+    padding-top:20px;
     .list {
       padding: 0 20px;
     }
@@ -60,6 +61,18 @@ body.app\.login, body.app\.signup {
   }
 }
 
-.login-btn {
-  margin-top: 20px;
+
+
+
+body.app\.login {
+  .has-header {
+    top: 0 !important;
+    padding-top:65px;
+  }
+  .bar.bar-stable {
+    display: none;
+  }
+  .login-btn {
+    margin-top: 20px;
+  }
 }

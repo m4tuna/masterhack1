@@ -9876,6 +9876,12 @@ input.price {
   input.price:focus {
     border: 1px solid #2ec598; }
 
+body ul.contacts li.item a {
+  color: #000; }
+
+.modal h3 {
+  margin-top: 50px; }
+
 body .menu-left .left {
   float: left; }
 

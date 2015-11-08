@@ -127,7 +127,7 @@ angular.module('starter.controllers', [])
         // The token contains id, last4, and card type
         var token = data["id"];
         //pay 5 dollers
-        $http.post("http://localhost:5000/api/issue/pay", {
+        $http.post("http://masterhack-server1.herokuapp.com/api/issue/pay", {
           token: token,
           amount: 5
         }, function(res){

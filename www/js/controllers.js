@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
       login: function(data) {
         // Log the user in
         console.log('Doing login', JSON.stringify(res.data, null, 2));
-        
+
         return $http
                 .post(config.server + "api/user/login", data)
                 .then(function(res) {
@@ -77,12 +77,12 @@ angular.module('starter.controllers', [])
       console.log("starting receipt scan");
 
       var options = {
-        quality: 50,
+        quality: 100,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 1000,
+        targetWidth: 750,
         targetHeight: 1000,
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
@@ -93,7 +93,7 @@ angular.module('starter.controllers', [])
       $cordovaCamera
       .getPicture(options)
       .then(function(imageData) {
-        return { "image": imageData };
+        return { "image": imageData.substring(0, imageData.length-2) };
       })
       .then($api.scan)
       .then(function(data) {

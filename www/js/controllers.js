@@ -1,10 +1,10 @@
 angular.module('starter.controllers', [])
 .value('config', {
-  server: "http://masterhack-server1.herokuapp.com/"
+  server: "https://masterhack-server1.herokuapp.com/"
 })
 .service("$api", [
-  "$http", "$rootScope",
-  function($http, $rootScope) {
+  "$http", "$rootScope", "config",
+  function($http, $rootScope, config) {
     var api = {
       error: function(err) {
         console.log("API ERROR", err);
@@ -15,7 +15,7 @@ angular.module('starter.controllers', [])
         console.log('Doing signup', data);
 
         return $http
-                .post(config.server + "signup")
+                .post(config.server + "api/user/signup")
                 .then(function(res) {
                   console.log("signup response", res);
 
@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
         console.log('Doing login', data);
         
         return $http
-                .post(config.server + "login")
+                .post(config.server + "api/user/login")
                 .then(function(res) {
                   console.log("login response", res);
 
@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
         console.log('Doing scan', data);
 
         return $http
-                .post(config.server + "scan")
+                .post(config.server + "api/receipt")
                 .then(function(res) {
                   console.log("scan response", res);
 
@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
         // Send a finished receipt for processing
         console.log('Doing confirm', data);
         return $http
-                .post(config.server + "process")
+                .post(config.server + "api/receipt/process")
                 .then(function(res) {
                   console.log("process response", res);
 
@@ -93,7 +93,7 @@ angular.module('starter.controllers', [])
       .then(function(imageData) {
         console.log("this is a test", imageData);
 
-        return { r_img: "data:image/jpeg;base64," + imageData };
+        return { "image": "data:image/jpeg;base64," + imageData };
       })
       .then($api.scan)
       .then(function(data) {

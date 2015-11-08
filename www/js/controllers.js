@@ -1,9 +1,10 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', [
-  "$scope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation",
-  function($scope, $ionicModal, $timeout, $cordovaCamera, $cordovaGeolocation) {
-    console.log("starting app controller", $cordovaCamera);
+  "$scope", "$rootScope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation",
+  function($scope, $rootScope, $ionicModal, $timeout, $cordovaCamera, $cordovaGeolocation) {
+    console.log("starting app controller", $rootScope.$state);
+
     $scope.scan = function() {
       var options = {
         quality: 50,
@@ -104,6 +105,7 @@ angular.module('starter.controllers', [])
 })
 .controller('IssueCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting issue controller");
+  console.log(SimplifyCommerce);
 
   //PAYMENT LOGIC HERE
    SimplifyCommerce.generateToken({

@@ -1,9 +1,10 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', [
-  "$scope", "$ionicModal", "$timeout", "$cordovaCamera",
-  function($scope, $ionicModal, $timeout, $cordovaCamera) {
-    console.log("starting app controller", $cordovaCamera);
+  "$scope", "$rootScope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation",
+  function($scope, $rootScope, $ionicModal, $timeout, $cordovaCamera, $cordovaGeolocation) {
+    console.log("starting app controller", $rootScope.$state);
+
     $scope.scan = function() {
       var options = {
         quality: 50,
@@ -66,7 +67,9 @@ angular.module('starter.controllers', [])
   //   }, 1000);
   // };
 }])
-
+.value('config', {
+  server: "http://masterhack-server1.herokuapp.com/"
+})
 .controller('ContactsCtrl', function($scope, $cordovaContacts, $stateParams){
   console.log("starting contacts controller");
 
@@ -100,8 +103,9 @@ angular.module('starter.controllers', [])
 .controller('NearbyCtrl', function($scope, $stateParams) {
   console.log("starting nearby controller");
 })
-.controller('IssueCtrl', function($scope, $stateParams, $http) {
+.controller('IssueCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting issue controller");
+  console.log(SimplifyCommerce);
 
   //PAYMENT LOGIC HERE
    SimplifyCommerce.generateToken({
@@ -130,7 +134,8 @@ angular.module('starter.controllers', [])
         // The token contains id, last4, and card type
         var token = data["id"];
         //pay 5 dollers
-        $http.post("http://masterhack-server1.herokuapp.com/api/issue/pay", {
+
+        $http.post(config.server + "/api/issue/pay", {
           token: token,
           amount: 5
         }).then(function(){

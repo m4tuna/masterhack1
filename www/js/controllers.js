@@ -1,11 +1,80 @@
 angular.module('starter.controllers', [])
+.value('config', {
+  server: "http://masterhack-server1.herokuapp.com/"
+})
+.service("$api", [
+  "$http", "$rootScope",
+  function($http, $rootScope) {
+    var api = {
+      error: function(err) {
+        console.log("API ERROR", err);
+        throw err;
+      },
+      signup: function(data) {
+        // Sign the user up
+        console.log('Doing signup', data);
 
+        return $http
+                .post(config.server + "signup")
+                .then(function(res) {
+                  console.log("signup response", res);
+
+                  $rootScope.user = res.data;
+                  return res.data;
+                }, api.error);
+      },
+      login: function(data) {
+        // Log the user in
+        console.log('Doing login', data);
+        
+        return $http
+                .post(config.server + "login")
+                .then(function(res) {
+                  console.log("login response", res);
+
+                  $rootScope.user = res.data;
+                  return res.data;
+                }, api.error);
+      },
+      scan: function(data) {
+        // Scan receipt image through OCR
+        console.log('Doing scan', data);
+
+        return $http
+                .post(config.server + "scan")
+                .then(function(res) {
+                  console.log("scan response", res);
+
+                  return res.data;
+                }, api.error);
+      },
+      process: function(data) {
+        // Send a finished receipt for processing
+        console.log('Doing confirm', data);
+        return $http
+                .post(config.server + "process")
+                .then(function(res) {
+                  console.log("process response", res);
+
+                  return res.data;
+                }, api.error);
+      }
+    };
+
+    return api;
+  }
+])
 .controller('AppCtrl', [
-  "$scope", "$rootScope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation",
-  function($scope, $rootScope, $ionicModal, $timeout, $cordovaCamera, $cordovaGeolocation) {
-    console.log("starting app controller", $rootScope.$state);
+  "$scope", "$rootScope", "$api", "$timeout", "$cordovaCamera", "$cordovaGeolocation", "config",
+  function($scope, $rootScope, $api, $timeout, $cordovaCamera, $cordovaGeolocation, config) {
+    console.log("starting app controller: ", $rootScope.$state);
+
+    // Perform the login action when the user submits the login form
+    $scope.doLogin = $api.login;
 
     $scope.scan = function() {
+      console.log("starting receipt scan");
+
       var options = {
         quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
@@ -19,15 +88,22 @@ angular.module('starter.controllers', [])
         correctOrientation:true
       };
 
-      $cordovaCamera.getPicture(options).then(function(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
+      $cordovaCamera
+      .getPicture(options)
+      .then(function(imageData) {
         console.log("this is a test", imageData);
-      }, function(err) {
-        console.log("picture error", err);
-        // error
+
+        return { r_img: "data:image/jpeg;base64," + imageData };
+      })
+      .then($api.scan)
+      .then(function(data) {
+        $scope.receipt = data;
+      })
+      .catch(function(err) {
+        console.log(err);
+        alert("error scanning receipt");
       });
-    }
+    };
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -55,21 +131,8 @@ angular.module('starter.controllers', [])
   // $scope.login = function() {
   //   $scope.modal.show();
   // };
-
-  // // Perform the login action when the user submits the login form
-  // $scope.doLogin = function() {
-  //   console.log('Doing login', $scope.loginData);
-
-  //   // Simulate a login delay. Remove this and replace with your login
-  //   // code if using a login system
-  //   $timeout(function() {
-  //     $scope.closeLogin();
-  //   }, 1000);
   // };
 }])
-.value('config', {
-  server: "http://masterhack-server1.herokuapp.com/"
-})
 .controller('ContactsCtrl', function($scope, $cordovaContacts, $stateParams){
   console.log("starting contacts controller");
 

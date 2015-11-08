@@ -98,6 +98,7 @@ angular.module('starter.controllers', [])
       .then($api.scan)
       .then(function(data) {
         $scope.receipt = data;
+        $rootScope.$state.go("app.charge");
       })
       .catch(function(err) {
         console.log("scan error: ", JSON.stringify(err, null, 2));
@@ -143,59 +144,49 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChargeCtrl', function($scope, $cordovaContacts, $stateParams, $ionicModal) {
-  console.log("starting ChargeCtrl");
+.controller('ChargeCtrl', [
+  "$scope", "$cordovaContacts", "$stateParams", "$ionicModal",
+  function($scope, $cordovaContacts, $stateParams, $ionicModal) {
+    console.log("starting ChargeCtrl");
 
-  // get the contacts
+    // get the contacts
 
-  $scope.getContacts = function() {
-
-    var obj = new ContactFindOptions();
-    obj.filter = " ";
-    obj.multiple = true;
-
-    console.log("navigator.contacts: " + navigator.contacts);
-    navigator.contacts.find(["displayName", "name", "phoneNumbers"], contacts_success, contacts_fail, obj);
-
-
-    function contacts_success(contacts) {
-      console.log("contacts_success(): " + JSON.stringify(contacts));
-      $scope.theContacts = contacts;
+    $scope.removeItem = function(idx, item) {
+      $scope.receipt.splice(idx,1);
     }
-    function contacts_fail(msg) {
-      console.log("get_contacts() Error: " + msg);
+
+    $scope.addContacts = function(item) {
+      console.log("adding contacts to item: ", item, $cordovaContacts);
+
+      $cordovaContacts.pickContact().then(function(contact) { //omitting parameter to .find() causes all contacts to be returned
+        console.log("what is this shit", JSON.stringify(contact, null, 2));
+        
+        if(!item.owners) {
+          item.owners = []
+        }
+
+        item.owners.push({ 
+          initials: contact.name.givenName.charAt(0) + contact.name.familyName.charAt(0),
+          number: contact.phoneNumbers[0].value.replace(/[^\d]/g,'')
+        });
+
+        console.log("new shit", JSON.stringify(item,null,2));
+        
+        // $ionicModal.fromTemplateUrl('templates/add.html', {
+        //   scope: $scope
+        // }).then(function(modal) {
+        //   $scope.modal = modal;
+        //   $scope.modal.show();
+        // });
+      }, function(err) {
+        console.log("get contacts fail: ", err);
+      });
+    };
+
+    $scope.removeContact = function(item,idx) {
+      item.owners.splice(idx,1);
     }
-    get_contacts();
-  };
-
-  // build the contacts modal
-
-  $scope.buildModal = function() {
-    console.log('does this fucking work?');
-    $ionicModal.fromTemplateUrl('templates/add.html', {
-      scope: $scope
-    }).then(function(modal) {
-      $scope.modal = modal;
-      $scope.modal.show();
-    });
-  };
-
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
-})
+}])
 .controller('ScanCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting ScanCtrl");
 

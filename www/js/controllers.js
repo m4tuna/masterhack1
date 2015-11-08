@@ -77,13 +77,13 @@ angular.module('starter.controllers', [])
       console.log("starting receipt scan");
 
       var options = {
-        quality: 75,
+        quality: 100,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
+        allowEdit: false,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 768,
-        targetHeight: 1024,
+        // targetWidth: 1080,
+        targetHeight: 1920,
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,

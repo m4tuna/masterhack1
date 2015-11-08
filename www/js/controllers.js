@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
       },
       scan: function(data) {
         // Scan receipt image through OCR
-        console.log('Doing scan', JSON.stringify(data, null,2));
+        console.log('Doing scan');
 
         // $scope.loading = true;
 
@@ -80,13 +80,13 @@ angular.module('starter.controllers', [])
       console.log("starting receipt scan");
 
       var options = {
-        quality: 100,
+        quality: 20,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: false,
         encodingType: Camera.EncodingType.JPEG,
         // targetWidth: 1080,
-        targetHeight: 1000,
+        targetHeight: 100,
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,

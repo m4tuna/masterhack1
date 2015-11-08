@@ -87,7 +87,7 @@ angular.module('starter.controllers', [])
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,
-        correctOrientation:false
+        correctOrientation:true
       };
 
       $cordovaCamera
@@ -132,18 +132,18 @@ angular.module('starter.controllers', [])
 
       $cordovaContacts.pickContact().then(function(contact) { //omitting parameter to .find() causes all contacts to be returned
         console.log("what is this shit", JSON.stringify(contact, null, 2));
-        
+
         if(!item.owners) {
           item.owners = []
         }
 
-        item.owners.push({ 
+        item.owners.push({
           initials: contact.name.givenName.charAt(0) + contact.name.familyName.charAt(0),
           number: contact.phoneNumbers[0].value.replace(/[^\d]/g,'')
         });
 
         console.log("new shit", JSON.stringify(item,null,2));
-        
+
         $ionicModal.fromTemplateUrl('templates/add.html', {
           scope: $scope
         }).then(function(modal) {

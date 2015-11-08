@@ -9742,6 +9742,9 @@ table {
 .scroll-content {
   top: 40px; }
 
+.item-input {
+  padding: 0px 10px 20px; }
+
 form {
   margin: 0 auto;
   width: 80%;

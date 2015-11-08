@@ -1,0 +1,19 @@
+// ==========================================================================
+// Form shit
+// ==========================================================================
+
+form {
+  margin: 0 auto;
+  width: 80%;
+  border:3px solid $var-white;
+  input[type="text"] {
+    width:100%;
+    display: block;
+    padding-left:15px;
+  }
+}
+
+
+.list .item {
+  background:$var-white;
+}

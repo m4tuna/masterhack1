@@ -38,7 +38,51 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       url: '/',
       views: {
         menuContent: {
+          templateUrl: 'templates/login.html',
+        }
+      }
+    })
+
+
+    .state('app.nearby', {
+      url: '/nearby',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/nearby.html',
+          controller: 'NearbyCtrl'
+        }
+      }
+    })
+
+
+    .state('app.newissue', {
+      url: '/new-issue',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/new-issue.html',
+          controller: 'IssueCtrl'
+        }
+      }
+    })
+
+
+    .state('app.single', {
+      url: '/single',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/single.html',
+          controller: 'IssueCtrl'
+        }
+      }
+    })
+
+
+    .state('app.main', {
+      url: '/main',
+      views: {
+        'menuContent': {
           templateUrl: 'templates/main.html',
+          controller: 'HistoryCtrl'
         }
       }
     })
@@ -92,7 +136,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       }
     })
 
-  .state('app.single', {
+  .state('app.historysingle', {
     url: '/history/:historyId',
     views: {
       'menuContent': {

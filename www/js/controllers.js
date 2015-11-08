@@ -96,6 +96,13 @@ angular.module('starter.controllers', [])
   ];
 
 })
+
+.controller('NearbyCtrl', function($scope, $stateParams) {
+  console.log("starting nearby controller");
+})
+.controller('IssueCtrl', function($scope, $stateParams) {
+  console.log("starting issue controller");
+})
 .controller('SettingsCtrl', function($scope, $stateParams) {
   console.log("starting setting controller");
 })

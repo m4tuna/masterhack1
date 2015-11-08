@@ -1,11 +1,81 @@
 angular.module('starter.controllers', [])
+.value('config', {
+  server: "https://masterhack-server1.herokuapp.com/"
+})
+.service("$api", [
+  "$http", "$rootScope", "config",
+  function($http, $rootScope, config) {
+    var api = {
+      error: function(err) {
+        console.log("API ERROR", JSON.stringify(err,null,2));
+        throw err;
+      },
+      signup: function(data) {
+        // Sign the user up
+        console.log('Doing signup', JSON.stringify(res.data, null, 2));
 
+        return $http
+                .post(config.server + "api/user/signup", data)
+                .then(function(res) {
+                  console.log("signup response", res);
+
+                  $rootScope.user = res.data;
+                  return res.data;
+                }, api.error);
+      },
+      login: function(data) {
+        // Log the user in
+        console.log('Doing login', JSON.stringify(res.data, null, 2));
+        
+        return $http
+                .post(config.server + "api/user/login", data)
+                .then(function(res) {
+                  console.log("login response", res);
+
+                  $rootScope.user = res.data.data;
+                  return res.data;
+                }, api.error);
+      },
+      scan: function(data) {
+        // Scan receipt image through OCR
+        console.log('Doing scan', JSON.stringify(data, null,2));
+
+        return $http
+                .post(config.server + "api/receipt", data)
+                .then(function(res) {
+                  console.log("scan response", JSON.stringify(res.data, null, 2));
+
+                  return res.data;
+                }, api.error);
+      },
+      confirm: function(data) {
+        // Send a finished receipt for processing
+        console.log('Doing confirm', JSON.stringify(res.data, null, 2));
+
+        return $http
+                .post(config.server + "api/receipt/process", data)
+                .then(function(res) {
+                  console.log("process response", res);
+
+                  return res.data;
+                }, api.error);
+      }
+    };
+
+    return api;
+  }
+])
 .controller('AppCtrl', [
-  "$scope", "$rootScope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation",
-  function($scope, $rootScope, $ionicModal, $timeout, $cordovaCamera, $cordovaGeolocation) {
-    console.log("starting app controller", $rootScope.$state);
+  "$scope", "$rootScope", "$api", "$timeout", "$cordovaCamera", "$cordovaGeolocation", "config",
+  function($scope, $rootScope, $api, $timeout, $cordovaCamera, $cordovaGeolocation, config) {
+    console.log("starting app controller: ", $rootScope.$state);
+
+    // Perform the login action when the user submits the login form
+    $scope.doLogin = $api.login;
 
     $scope.scan = function() {
+      console.log("starting receipt scan");
+
       var options = {
         quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
@@ -20,15 +90,20 @@ angular.module('starter.controllers', [])
         correctOrientation:true
       };
 
-      $cordovaCamera.getPicture(options).then(function(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
-        console.log("this is a test", imageData);
-      }, function(err) {
-        console.log("picture error", err);
-        // error
+      $cordovaCamera
+      .getPicture(options)
+      .then(function(imageData) {
+        return { "image": imageData };
+      })
+      .then($api.scan)
+      .then(function(data) {
+        $scope.receipt = data;
+      })
+      .catch(function(err) {
+        console.log("scan error: ", JSON.stringify(err, null, 2));
+        alert("error scanning receipt");
       });
-    }
+    };
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -56,22 +131,8 @@ angular.module('starter.controllers', [])
   // $scope.login = function() {
   //   $scope.modal.show();
   // };
-
-  // // Perform the login action when the user submits the login form
-  // $scope.doLogin = function() {
-  //   console.log('Doing login', $scope.loginData);
-
-  //   // Simulate a login delay. Remove this and replace with your login
-  //   // code if using a login system
-  //   $timeout(function() {
-  //     $scope.closeLogin();
-  //   }, 1000);
   // };
 }])
-.value('config', {
-  server: "http://masterhack-server1.herokuapp.com/"
-})
-
 .controller('HistoryCtrl', function($scope) {
   console.log("starting history controller");
 

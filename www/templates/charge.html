@@ -5,41 +5,30 @@
     </div>
     <div class="list">
 
-
       <div class="item item-button-right">
-        Chocolate Cake -- <input type="text" name="name" value="$ 12.99" class="price">
+        {{ item.text }}-- <input type="text" name="name" value="$ {{ item.value }}" class="price">
         <button class="button button-balanced button-add" ng-click=" getContacts(); buildModal()">
           <i class="fa fa-plus-circle"></i>
         </button>
         <button class="button button-assertive button-inline">
           <i class="fa fa-times"></i>
         </button>
-        <div class="people-added">
+        <div class="people-added" ng-if="item.owners">
           <p>
             Assigned to:
           </p>
-          <label class="name">
-            MF
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-          <label class="name">
-            SM
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-          <label class="name">
-            AL
+          <label class="name" ng-repeat="owner for item.owners">
+            {{ owner.initials }}
             <a href="#"><i class="fa fa-times"></i></a>
           </label>
         </div>
       </div>
 
       <div class="center">
-        <button class="button button-block button-dark" ui-sref="^.scan"> <i class="fa fa-plus-circle"></i> Add another item</button>
+        <button class="button button-block button-dark" ng-click="addItem()"> <i class="fa fa-plus-circle"></i> Add another item</button>
         <button class="button button-block button-royal" ui-sref="^.settings"> <i class="fa fa-credit-card"></i> Add/Update Credit Cart</button>
-        <button class="button button-block button-balanced" ui-sref="^.scan"><i class="fa fa-square-o"></i> Be Square</button>
+        <button class="button button-block button-balanced" ui-sref="^.complete"><i class="fa fa-square-o"></i> Be Square</button>
       </div>
-
-
     </div>
   </ion-content>
 </ion-view>

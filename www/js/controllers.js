@@ -7,15 +7,15 @@ angular.module('starter.controllers', [])
   function($http, $rootScope, config) {
     var api = {
       error: function(err) {
-        console.log("API ERROR", err);
+        console.log("API ERROR", JSON.stringify(err,null,2));
         throw err;
       },
       signup: function(data) {
         // Sign the user up
-        console.log('Doing signup', data);
+        console.log('Doing signup', JSON.stringify(res.data, null, 2));
 
         return $http
-                .post(config.server + "api/user/signup")
+                .post(config.server + "api/user/signup", data)
                 .then(function(res) {
                   console.log("signup response", res);
 
@@ -25,34 +25,35 @@ angular.module('starter.controllers', [])
       },
       login: function(data) {
         // Log the user in
-        console.log('Doing login', data);
+        console.log('Doing login', JSON.stringify(res.data, null, 2));
         
         return $http
-                .post(config.server + "api/user/login")
+                .post(config.server + "api/user/login", data)
                 .then(function(res) {
                   console.log("login response", res);
 
-                  $rootScope.user = res.data;
+                  $rootScope.user = res.data.data;
                   return res.data;
                 }, api.error);
       },
       scan: function(data) {
         // Scan receipt image through OCR
-        console.log('Doing scan', data);
+        console.log('Doing scan', JSON.stringify(data, null,2));
 
         return $http
-                .post(config.server + "api/receipt")
+                .post(config.server + "api/receipt", data)
                 .then(function(res) {
-                  console.log("scan response", res);
+                  console.log("scan response", JSON.stringify(res.data, null, 2));
 
                   return res.data;
                 }, api.error);
       },
-      process: function(data) {
+      confirm: function(data) {
         // Send a finished receipt for processing
-        console.log('Doing confirm', data);
+        console.log('Doing confirm', JSON.stringify(res.data, null, 2));
+
         return $http
-                .post(config.server + "api/receipt/process")
+                .post(config.server + "api/receipt/process", data)
                 .then(function(res) {
                   console.log("process response", res);
 
@@ -91,16 +92,14 @@ angular.module('starter.controllers', [])
       $cordovaCamera
       .getPicture(options)
       .then(function(imageData) {
-        console.log("this is a test", imageData);
-
-        return { "image": "data:image/jpeg;base64," + imageData };
+        return { "image": imageData };
       })
       .then($api.scan)
       .then(function(data) {
         $scope.receipt = data;
       })
       .catch(function(err) {
-        console.log(err);
+        console.log("scan error: ", JSON.stringify(err, null, 2));
         alert("error scanning receipt");
       });
     };
@@ -133,10 +132,6 @@ angular.module('starter.controllers', [])
   // };
   // };
 }])
-.value('config', {
-  server: "http://masterhack-server1.herokuapp.com/"
-})
-
 .controller('HistoryCtrl', function($scope) {
   console.log("starting history controller");
 

@@ -5,7 +5,7 @@
     </div>
     <div class="list">
 
-      <div class="item item-button-right" ng-repeat="item in receipt">
+      <div class="item item-button-right" ng-repeat="item in receipt.lineItems">
         {{ item.text }}-- <input type="text" name="name" value="$ {{ item.value }}" class="price">
         <button class="button button-balanced button-add" ng-click="addContacts(item);">
           <i class="fa fa-plus-circle"></i>
@@ -32,3 +32,17 @@
     </div>
   </ion-content>
 </ion-view>
+
+<script id="templates/add.html" type="text/ng-template">
+  <ion-modal-view >
+    <h3 ng-click="closeModal()" class="center"><i class="fa fa-times-circle"></i> Create Item</h3>
+    <form>
+      <label>Item Text</label>
+      <input type="text" ng-model="newItem.text" />
+      <label>Item Value</label>
+      <input type="price" ng-model="newItem.value" />
+
+      <button class="button" ng-click="addItem(newItem)"></button>
+    </form>
+  </ion-modal-view>
+</script>

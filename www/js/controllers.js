@@ -87,7 +87,7 @@ angular.module('starter.controllers', [])
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,
-        correctOrientation:true
+        correctOrientation:false
       };
 
       $cordovaCamera
@@ -105,44 +105,16 @@ angular.module('starter.controllers', [])
         alert("error scanning receipt");
       });
     };
-
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  // Form data for the login modal
-  // $scope.loginData = {};
-
-  // // Create the login modal that we will use later
-  // $ionicModal.fromTemplateUrl('templates/login.html', {
-  //   scope: $scope
-  // }).then(function(modal) {
-  //   $scope.modal = modal;
-  // });
-
-  // Triggered in the login modal to close it
-  // $scope.closeLogin = function() {
-  //   $scope.modal.hide();
-  // };
-
-  // // Open the login modal
-  // $scope.login = function() {
-  //   $scope.modal.show();
-  // };
-  // };
 }])
-.controller('HistoryCtrl', function($scope) {
-  console.log("starting history controller");
+// .controller('HistoryCtrl', function($scope) {
+//   console.log("starting history controller");
 
-  $scope.history = [
-    { title: 'Bachelor Party 2015', id: 1 },
-    { title: 'Vegas Trip', id: 2 }
-  ];
+//   $scope.history = [
+//     { title: 'Bachelor Party 2015', id: 1 },
+//     { title: 'Vegas Trip', id: 2 }
+//   ];
 
-})
+// })
 
 .controller('ChargeCtrl', [
   "$scope", "$cordovaContacts", "$stateParams", "$ionicModal",
@@ -152,7 +124,7 @@ angular.module('starter.controllers', [])
     // get the contacts
 
     $scope.removeItem = function(idx, item) {
-      $scope.receipt.splice(idx,1);
+      $scope.receipt.lineItems.splice(idx,1);
     }
 
     $scope.addContacts = function(item) {
@@ -172,12 +144,12 @@ angular.module('starter.controllers', [])
 
         console.log("new shit", JSON.stringify(item,null,2));
         
-        // $ionicModal.fromTemplateUrl('templates/add.html', {
-        //   scope: $scope
-        // }).then(function(modal) {
-        //   $scope.modal = modal;
-        //   $scope.modal.show();
-        // });
+        $ionicModal.fromTemplateUrl('templates/add.html', {
+          scope: $scope
+        }).then(function(modal) {
+          $scope.modal = modal;
+          $scope.modal.show();
+        });
       }, function(err) {
         console.log("get contacts fail: ", err);
       });
@@ -186,80 +158,29 @@ angular.module('starter.controllers', [])
     $scope.removeContact = function(item,idx) {
       item.owners.splice(idx,1);
     }
-}])
-.controller('ScanCtrl', function($scope, $stateParams, $http, config) {
-  console.log("starting ScanCtrl");
 
-  //PAYMENT LOGIC HERE
-  //  SimplifyCommerce.generateToken({
-  //    key: "sbpb_NzYwZjc1YmEtMmZhOC00MTMzLWE1ZWQtY2EzYjA2OTYzZTBj",
-  //    card: {
-  //      number: "4111111111111111",
-  //      cvc: "234",
-  //      expMonth: "10",
-  //      expYear: "16"
-  //    }
-  //  }, function(data){
-  //     console.log("Processing token");
-  //    if (data.error) {
-  //      // Show any validation errors
-  //      if (data.error.code == "validation") {
-  //        var fieldErrors = data.error.fieldErrors,
-  //        fieldErrorsLength = fieldErrors.length,
-  //        errorList = "";
-  //        for (var i = 0; i < fieldErrorsLength; i++) {
-  //          errorList += fieldErrors[i].field + ": " + fieldErrors[i].message;
-  //        }
-  //        console.log("Error: ", errorList);
-  //      }
-  //    } else {
-  //       console.log("Connecting to masterhack server1");
-  //       // The token contains id, last4, and card type
-  //       var token = data["id"];
-  //       //pay 5 dollers
-   //
-  //       $http.post(config.server + "/api/issue/pay", {
-  //         token: token,
-  //         amount: 5
-  //       }).then(function(){
-  //         console.log("PAYMENT COMPLETED! YEA YEA");
-  //       });
-  //    }
-  //  });
-})
-.controller('SignupCtrl', function($scope, $stateParams) {
-  console.log("starting issue controller");
-})
+    $scope.addItem = function(item) {
+      if(!$scope.receipt) {
+        $scope.receipt = { lineItems: [] };
+      }
+
+      if(!$scope.receipt.items) {
+        $scope.receipt.lineItems = [];
+      }
+
+      $scope.receipt.lineItems.push(item);
+      $scope.modal.hide();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    }
+}])
 .controller('SettingsCtrl', function($scope, $stateParams) {
   console.log("starting setting controller");
 })
-.controller('HistoryItemCtrl', function($scope, $stateParams) {
-  console.log("starting history item controller");
+.controller('ScanCtrl', function($scope, $stateParams) {
+  console.log("starting scan controller");
 })
-
-.controller('UploadCtrl', function($scope, Camera) {
-  console.log("starting upload controller");
-  function takePicture() {
-    navigator.camera.getPicture(function(imageURI) {
-
-      // imageURI is the URL of the image that we can use for
-      // an <img> element or backgroundImage.
-
-    }, function(err) {
-
-      // Ruh-roh, something bad happened
-
-    }, cameraOptions);
-  }
-
-  $scope.getPhoto = function() {
-    Camera.getPicture().then(function(imageURI) {
-      console.log(imageURI);
-    }, function(err) {
-      console.err(err);
-    });
-  };
-})
-
 
 ;

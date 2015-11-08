@@ -38,7 +38,8 @@ angular.module('starter.controllers', [])
       },
       scan: function(data) {
         // Scan receipt image through OCR
-        console.log('Doing scan', JSON.stringify(data, null,2));
+        console.log('Doing scan');
+        // JSON.stringify(data, null,2)
 
         // $scope.loading = true;
 
@@ -90,7 +91,7 @@ angular.module('starter.controllers', [])
         cameraDirection: 0,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false,
-        correctOrientation:true,
+        correctOrientation:false,
       };
       $scope.loading = true;
       var isSet = false;

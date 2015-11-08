@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', [
-  "$scope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation"
+  "$scope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation",
   function($scope, $ionicModal, $timeout, $cordovaCamera, $cordovaGeolocation) {
     console.log("starting app controller", $cordovaCamera);
     $scope.scan = function() {
@@ -115,6 +115,7 @@ angular.module('starter.controllers', [])
        expYear: "16"
      }
    }, function(data){
+      console.log("Processing token");
      if (data.error) {
        // Show any validation errors
        if (data.error.code == "validation") {
@@ -124,15 +125,18 @@ angular.module('starter.controllers', [])
          for (var i = 0; i < fieldErrorsLength; i++) {
            errorList += fieldErrors[i].field + ": " + fieldErrors[i].message;
          }
+         console.log("Error: ", errorList);
        }
      } else {
+        console.log("Connecting to masterhack server1");
         // The token contains id, last4, and card type
         var token = data["id"];
         //pay 5 dollers
-        $http.post(config + "/api/issue/pay", {
+
+        $http.post(config.server + "/api/issue/pay", {
           token: token,
           amount: 5
-        }, function(res){
+        }).then(function(){
           console.log("PAYMENT COMPLETED! YEA YEA");
         });
      }

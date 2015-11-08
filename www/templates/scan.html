@@ -3,15 +3,14 @@
     <h1 class="title">beSquare</h1>
   </ion-header-bar>
   <ion-content>
-    <div class="logo">
+    <div class="logo" ng-class="{'logo-spin': loading}">
       <img src="img/logo.png" alt="" />
     </div>
-    <div class="list new-issue">
+    <div class="list new-issue" ng-hide="loading">
       <button type="button" ng-click="scan()" class="button button-block button-dark" ><i class="fa fa-camera"></i> Scan Receipt</button>
       <div class="center">
         <a href="#" ui-sref="^.charge">Skip</a>
       </div>
-
     </div>
 
   </ion-content>

@@ -81,24 +81,58 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChargeCtrl', function($scope, $cordovaContacts, $stateParams) {
+.controller('ChargeCtrl', function($scope, $cordovaContacts, $stateParams, $ionicModal) {
   console.log("starting ChargeCtrl");
 
+  // get the contacts
+
   $scope.getContacts = function() {
-    $scope.phoneContacts = [];
-    function onSuccess(contacts) {
-      for (var i = 0; i < contacts.length; i++) {
-        var contact = contacts[i];
-        $scope.phoneContacts.push(contact);
-      }
-    };
-    function onError(contactError) {
-      alert(contactError);
-    };
-    var options = {};
-    options.multiple = true;
-    $cordovaContacts.find(options).then(onSuccess, onError);
+
+    var obj = new ContactFindOptions();
+    obj.filter = " ";
+    obj.multiple = true;
+
+    console.log("navigator.contacts: " + navigator.contacts);
+    navigator.contacts.find(["displayName", "name", "phoneNumbers"], contacts_success, contacts_fail, obj);
+
+
+    function contacts_success(contacts) {
+      console.log("contacts_success(): " + JSON.stringify(contacts));
+      $scope.theContacts = contacts;
+    }
+    function contacts_fail(msg) {
+      console.log("get_contacts() Error: " + msg);
+    }
+    get_contacts();
   };
+
+  // build the contacts modal
+
+  $scope.buildModal = function() {
+    console.log('does this fucking work?');
+    $ionicModal.fromTemplateUrl('templates/add.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
 })
 .controller('ScanCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting ScanCtrl");

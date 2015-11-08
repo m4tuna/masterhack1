@@ -5,63 +5,10 @@
     </div>
     <div class="list">
 
-      <div class="item item-button-right">
-        Chocolate Cake -- <input type="text" name="name" value="$ 12.99" class="price">
-        <button class="button button-balanced button-add" ng-click="getContacts()">
-          <i class="fa fa-plus-circle"></i>
-        </button>
-        <button class="button button-assertive button-inline">
-          <i class="fa fa-times"></i>
-        </button>
-        <div class="people-added">
-          <p>
-            Assigned to:
-          </p>
-          <label class="name">
-            MF
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-          <label class="name">
-            SM
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-          <label class="name">
-            AL
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-        </div>
-      </div>
 
       <div class="item item-button-right">
         Chocolate Cake -- <input type="text" name="name" value="$ 12.99" class="price">
-        <button class="button button-balanced button-add" ng-click="getContacts()">
-          <i class="fa fa-plus-circle"></i>
-        </button>
-        <button class="button button-assertive button-inline">
-          <i class="fa fa-times"></i>
-        </button>
-        <div class="people-added">
-          <p>
-            Assigned to:
-          </p>
-          <label class="name">
-            MF
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-          <label class="name">
-            SM
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-          <label class="name">
-            AL
-            <a href="#"><i class="fa fa-times"></i></a>
-          </label>
-        </div>
-      </div>
-
-      <div class="item item-button-right">
-        Chocolate Cake -- <input type="text" name="name" value="$ 12.99" class="price">
-        <button class="button button-balanced button-add" ng-click="getContacts()">
+        <button class="button button-balanced button-add" ng-click=" getContacts(); buildModal()">
           <i class="fa fa-plus-circle"></i>
         </button>
         <button class="button button-assertive button-inline">
@@ -96,3 +43,21 @@
     </div>
   </ion-content>
 </ion-view>
+
+<script id="templates/add.html" type="text/ng-template">
+  <ion-modal-view >
+
+    <h3 ng-click="closeModal()" class="center"><i class="fa fa-times-circle"></i> Your Contacts</h3>
+
+    <ion-content scroll="true">
+
+      <ion-list class="list contacts">
+        <ion-item class="item" ng-repeat="contact in theContacts">
+          <a href="#">
+            {{contact.name.formatted}}
+          </a>
+        </ion-item>
+      </ul>
+    </ion-content>
+  </ion-modal-view>
+</script>

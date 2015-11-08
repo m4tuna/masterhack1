@@ -9739,8 +9739,15 @@ table {
   color:$var-white;
 }
  */
-.item-input {
+.new-issue .item-input {
   padding: 0px 10px 20px; }
+
+.login .scroll {
+  margin-top: 20px; }
+  .login .scroll h1 {
+    font-size: 20px;
+    color: #fff;
+    text-align: center; }
 
 input[type="text"] {
   width: 100%;
@@ -9755,3 +9762,6 @@ textarea {
 
 .list .item {
   background: #fff; }
+
+input[type="password"] {
+  border: 1px solid #a6a6a6; }

@@ -1,25 +1,28 @@
-<ion-view>
+<ion-view view-title="fund2fix">
   <ion-header-bar>
     <h1 class="title">split IT</h1>
   </ion-header-bar>
-  <ion-content>
+  <ion-content class="login">
     <form ng-submit="doLogin()">
       <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Email</span>
-          <input type="text" ng-model="loginData.email">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Username</span>
+          <input type="text" placeholder="John">
         </label>
-        <label class="item item-input">
+
+        <label class="item item-input item-stacked-label">
           <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
+          <input type="password" placeholder="Password">
         </label>
+
         <label class="item">
           <button class="button button-block button-positive" type="submit">Log in</button>
         </label>
+      </div>
+
         <div class="center">
           <a href="#" ui-sref="^.signup">Register</a>
         </div>
-      </div>
     </form>
   </ion-content>
 </ion-view>

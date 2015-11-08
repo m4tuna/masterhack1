@@ -1,8 +1,8 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', [
-  "$scope", "$ionicModal", "$timeout", "$cordovaCamera",
-  function($scope, $ionicModal, $timeout, $cordovaCamera) {
+  "$scope", "$ionicModal", "$timeout", "$cordovaCamera", "$cordovaGeolocation"
+  function($scope, $ionicModal, $timeout, $cordovaCamera, $cordovaGeolocation) {
     console.log("starting app controller", $cordovaCamera);
     $scope.scan = function() {
       var options = {
@@ -66,7 +66,9 @@ angular.module('starter.controllers', [])
   //   }, 1000);
   // };
 }])
-
+.value('config', {
+  server: "http://masterhack-server1.herokuapp.com/"
+})
 .controller('ContactsCtrl', function($scope, $cordovaContacts, $stateParams){
   console.log("starting contacts controller");
 
@@ -100,7 +102,7 @@ angular.module('starter.controllers', [])
 .controller('NearbyCtrl', function($scope, $stateParams) {
   console.log("starting nearby controller");
 })
-.controller('IssueCtrl', function($scope, $stateParams, $http) {
+.controller('IssueCtrl', function($scope, $stateParams, $http, config) {
   console.log("starting issue controller");
 
   //PAYMENT LOGIC HERE
@@ -127,7 +129,7 @@ angular.module('starter.controllers', [])
         // The token contains id, last4, and card type
         var token = data["id"];
         //pay 5 dollers
-        $http.post("http://localhost:5000/api/issue/pay", {
+        $http.post(config + "/api/issue/pay", {
           token: token,
           amount: 5
         }, function(res){

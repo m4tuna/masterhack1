@@ -6,7 +6,8 @@
     <div class="list">
 
 
-      <div class="item item-button-right">
+      <div class="item item-button-right" >
+        <!-- ng-repeat="item in items" -->
         Chocolate Cake -- <input type="text" name="name" value="$ 12.99" class="price">
         <button class="button button-balanced button-add" ng-click=" getContacts(); buildModal()">
           <i class="fa fa-plus-circle"></i>
@@ -34,9 +35,9 @@
       </div>
 
       <div class="center">
-        <button class="button button-block button-dark" ui-sref="^.scan"> <i class="fa fa-plus-circle"></i> Add another item</button>
+        <button class="button button-block button-dark" ng-click="addItem()"> <i class="fa fa-plus-circle"></i> Add another item</button>
         <button class="button button-block button-royal" ui-sref="^.settings"> <i class="fa fa-credit-card"></i> Add/Update Credit Cart</button>
-        <button class="button button-block button-balanced" ui-sref="^.scan"><i class="fa fa-square-o"></i> Be Square</button>
+        <button class="button button-block button-balanced" ui-sref="^.complete"><i class="fa fa-square-o"></i> Be Square</button>
       </div>
 
 

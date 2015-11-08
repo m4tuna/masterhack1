@@ -9744,8 +9744,27 @@ table {
 
 .login .scroll {
   margin-top: 20px; }
+  .login .scroll .list .item {
+    background: none;
+    border: none; }
+  .login .scroll input[type="password"], .login .scroll input[type="text"] {
+    border: 1px solid #fff;
+    padding: 5px;
+    height: 45px; }
+    .login .scroll input[type="password"]::-webkit-input-placeholder, .login .scroll input[type="text"]::-webkit-input-placeholder {
+      color: #fff; }
+    .login .scroll input[type="password"]:-moz-placeholder, .login .scroll input[type="text"]:-moz-placeholder {
+      /* Firefox 18- */
+      color: #fff; }
+    .login .scroll input[type="password"]::-moz-placeholder, .login .scroll input[type="text"]::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #fff; }
+    .login .scroll input[type="password"]:-ms-input-placeholder, .login .scroll input[type="text"]:-ms-input-placeholder {
+      color: #fff; }
+  .login .scroll label, .login .scroll .input-label {
+    color: #fff; }
   .login .scroll h1 {
-    font-size: 20px;
+    font-size: 80px;
     color: #fff;
     text-align: center; }
 
@@ -9764,4 +9783,5 @@ textarea {
   background: #fff; }
 
 input[type="password"] {
-  border: 1px solid #a6a6a6; }
+  border: 1px solid #a6a6a6;
+  padding: 5px; }

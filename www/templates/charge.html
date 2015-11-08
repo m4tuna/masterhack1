@@ -5,21 +5,21 @@
     </div>
     <div class="list">
 
-      <div class="item item-button-right">
+      <div class="item item-button-right" ng-repeat="item in receipt.lineItems">
         {{ item.text }}-- <input type="text" name="name" value="$ {{ item.value }}" class="price">
-        <button class="button button-balanced button-add" ng-click=" getContacts(); buildModal()">
+        <button class="button button-balanced button-add" ng-click="addContacts(item);">
           <i class="fa fa-plus-circle"></i>
         </button>
-        <button class="button button-assertive button-inline">
+        <button class="button button-assertive button-inline" ng-click="removeItem($index, item);">
           <i class="fa fa-times"></i>
         </button>
         <div class="people-added" ng-if="item.owners">
           <p>
             Assigned to:
           </p>
-          <label class="name" ng-repeat="owner for item.owners">
+          <label class="name" ng-repeat="owner in item.owners">
             {{ owner.initials }}
-            <a href="#"><i class="fa fa-times"></i></a>
+            <button class="button button-sm" ng-click="removeContact($index);"><i class="fa fa-times"></i></button>
           </label>
         </div>
       </div>
@@ -35,18 +35,14 @@
 
 <script id="templates/add.html" type="text/ng-template">
   <ion-modal-view >
+    <h3 ng-click="closeModal()" class="center"><i class="fa fa-times-circle"></i> Create Item</h3>
+    <form>
+      <label>Item Text</label>
+      <input type="text" ng-model="newItem.text" />
+      <label>Item Value</label>
+      <input type="price" ng-model="newItem.value" />
 
-    <h3 ng-click="closeModal()" class="center"><i class="fa fa-times-circle"></i> Your Contacts</h3>
-
-    <ion-content scroll="true">
-
-      <ion-list class="list contacts">
-        <ion-item class="item" ng-repeat="contact in theContacts">
-          <a href="#">
-            {{contact.name.formatted}}
-          </a>
-        </ion-item>
-      </ul>
-    </ion-content>
+      <button class="button" ng-click="addItem(newItem)"></button>
+    </form>
   </ion-modal-view>
 </script>

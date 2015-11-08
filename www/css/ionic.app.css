@@ -9819,7 +9819,14 @@ body.app\.login .scroll-content, body.app\.signup .scroll-content {
     color: #fff;
     text-align: center; }
 
-.login-btn {
+body.app\.login .has-header {
+  top: 0;
+  padding-top: 50px; }
+
+body.app\.login .bar.bar-stable {
+  display: none; }
+
+body.app\.login .login-btn {
   margin-top: 20px; }
 
 body.app\.scan .scroll {

@@ -2,6 +2,7 @@
 // Login Signup
 // ==========================================================================
 
+
 body.app\.login, body.app\.signup {
   .buttons-left {
     display: none;
@@ -60,6 +61,18 @@ body.app\.login, body.app\.signup {
   }
 }
 
-.login-btn {
-  margin-top: 20px;
+
+
+
+body.app\.login {
+  .has-header {
+    top: 0;
+    padding-top:50px;
+  }
+  .bar.bar-stable {
+    display: none;
+  }
+  .login-btn {
+    margin-top: 20px;
+  }
 }

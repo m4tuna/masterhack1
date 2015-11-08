@@ -92,10 +92,11 @@ angular.module('starter.controllers', [])
         saveToPhotoAlbum: false,
         correctOrientation:true,
       };
-
+      $scope.loading = true;
       $cordovaCamera
       .getPicture(options)
       .then(function(imageData) {
+
         return { "image": imageData.substring(0, imageData.length-2) };
       })
       .then($api.scan)
@@ -106,6 +107,9 @@ angular.module('starter.controllers', [])
       .catch(function(err) {
         console.log("scan error: ", JSON.stringify(err, null, 2));
         alert("error scanning receipt");
+      })
+      .finally(function () {
+        $scope.loading = false;
       });
     };
 

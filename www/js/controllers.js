@@ -143,13 +143,6 @@ angular.module('starter.controllers', [])
         });
 
         console.log("new shit", JSON.stringify(item,null,2));
-        
-        $ionicModal.fromTemplateUrl('templates/add.html', {
-          scope: $scope
-        }).then(function(modal) {
-          $scope.modal = modal;
-          $scope.modal.show();
-        });
       }, function(err) {
         console.log("get contacts fail: ", err);
       });
@@ -159,7 +152,16 @@ angular.module('starter.controllers', [])
       item.owners.splice(idx,1);
     }
 
-    $scope.addItem = function(item) {
+    $scope.addItem = function() {
+      $ionicModal.fromTemplateUrl('templates/add.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+        $scope.modal.show();
+      });
+    }
+
+    $scope.adding = function(item) {
       if(!$scope.receipt) {
         $scope.receipt = { lineItems: [] };
       }

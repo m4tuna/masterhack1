@@ -19,7 +19,7 @@
           </p>
           <label class="name" ng-repeat="owner in item.owners">
             {{ owner.initials }}
-            <button class="button button-sm" ng-click="removeContact($index);"><i class="fa fa-times"></i></button>
+            <a ng-click="removeContact($index);"><i class="fa fa-times"></i></a>
           </label>
         </div>
       </div>

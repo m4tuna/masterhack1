@@ -6,6 +6,11 @@
     <div class="logo" ng-class="{'logo-spin': loading}">
       <img src="img/logo.png" alt="" />
     </div>
+    <div class="center" ng-show="loading">
+      <p>
+        We're processing your receipt. Thanks for your patience!
+      </p>
+    </div>
     <div class="list new-issue" ng-hide="loading">
       <button type="button" ng-click="scan()" class="button button-block button-dark" ><i class="fa fa-camera"></i> Scan Receipt</button>
       <div class="center">

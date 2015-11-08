@@ -45,3 +45,23 @@ body.app\.scan {
     }
   }
 }
+
+label.name {
+  background: #2EC598;
+  color: #fff;
+  padding: 1px 5px;
+  margin-right:2px;
+}
+.button-add  {
+  right:65px !important;
+}
+
+input.price {
+  width:auto;
+  max-width:100px;
+  display: inline-block;
+  border:none;
+  &:focus {
+    border:1px solid $var-green;
+  }
+}

@@ -9820,8 +9820,8 @@ body.app\.login .scroll-content, body.app\.signup .scroll-content {
     text-align: center; }
 
 body.app\.login .has-header {
-  top: 0;
-  padding-top: 50px; }
+  top: 0 !important;
+  padding-top: 65px; }
 
 body.app\.login .bar.bar-stable {
   display: none; }
@@ -9858,6 +9858,23 @@ body.app\.scan .scroll {
     margin-bottom: 0;
     color: #fff;
     text-align: center; }
+
+label.name {
+  background: #2EC598;
+  color: #fff;
+  padding: 1px 5px;
+  margin-right: 2px; }
+
+.button-add {
+  right: 65px !important; }
+
+input.price {
+  width: auto;
+  max-width: 100px;
+  display: inline-block;
+  border: none; }
+  input.price:focus {
+    border: 1px solid #2ec598; }
 
 body .menu-left .left {
   float: left; }

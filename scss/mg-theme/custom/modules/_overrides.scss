@@ -14,9 +14,13 @@ body.app\.complete {
     font-size:100px;
   }
 }
-.load-copy p {
-  font-size:20px;
-  color:$var-white;
+.load-copy {
+  width:65%;
+  margin: 0 auto;
+  p {
+    font-size:20px;
+    color:$var-white;
+  }
 }
 .logo-spin {
     -webkit-animation:spin 2s linear infinite;

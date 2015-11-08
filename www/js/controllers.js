@@ -77,7 +77,7 @@ angular.module('starter.controllers', [])
       console.log("starting receipt scan");
 
       var options = {
-        quality: 100,
+        quality: 75,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
